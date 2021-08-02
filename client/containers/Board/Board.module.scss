@@ -1,0 +1,22 @@
+.board {
+  background: #F5F7FA;
+
+  &_inner {
+    padding: 33px 0px 54px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_carousel {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 280px;
+  }
+
+  &_tabs {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    padding-left: 280px;
+  }
+}

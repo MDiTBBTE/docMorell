@@ -1,0 +1,31 @@
+.boardTab {
+  &_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &_imgWrapper {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    border-radius: 100%;
+  }
+
+  &_title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  &_text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}

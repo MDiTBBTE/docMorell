@@ -1,0 +1,38 @@
+.paymentBoard {
+  margin-top: 77px;
+
+  &_title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+  }
+
+  &_cnt {
+    margin-top: 22px;
+    padding: 24px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background: #FFFFFF;
+    box-shadow: 0px 15px 35px rgba(39, 44, 47, 0.1);
+    border-radius: 0px;
+  }
+
+  &_imgWrapper {
+    margin-top: 22px;
+    background: #F1F5F9;
+    border-radius: 5px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 77px;
+    height: 57px;
+
+    &:nth-child(-n+3) {
+      margin-top: 0;
+    }
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+}

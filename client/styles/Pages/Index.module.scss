@@ -1,0 +1,10 @@
+.main {
+    &_cnt {
+      margin: 65px auto;
+      display: flex;
+
+      &_left {
+        margin-right: 30px;
+      }
+    }
+}

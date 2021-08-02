@@ -1,0 +1,35 @@
+.footer {
+
+  &-isWhite {
+    background: #FFF;
+  }
+
+  &-isGray {
+    background: #E5E5E5;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 59px 0;
+  }
+
+  &__logo {
+    &__txt {
+      margin: 11px 0 0 70px;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    list-style: none;
+    &_el {
+      margin-left: 42px;
+    }
+  }
+
+  &__num {
+  }
+}
+

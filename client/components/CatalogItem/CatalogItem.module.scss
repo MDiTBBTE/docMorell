@@ -1,0 +1,44 @@
+.catalogItem {
+  max-width: 268px;
+  background: #FFFFFF;
+  box-shadow: 0 15px 35px rgba(39, 44, 47, 0.1);
+
+  &_inner {
+    padding: 20px 24px;
+  }
+
+  &_title {
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: center;
+  }
+
+  &_sub {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  &_desc {
+    margin-top: 13px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &_down {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 11px;
+
+    &_price {
+      &>p {
+        font-weight: bold;
+        font-size: 17px;
+      }
+    }
+  }
+}

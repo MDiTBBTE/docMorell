@@ -1,0 +1,66 @@
+.dd {
+  &_inner {
+
+    &_header {
+      display: flex;
+      cursor: pointer;
+      padding: 8px 38px 8px 23px;
+
+      &>p {
+        margin-left: 13px;
+        font-weight: normal;
+        font-size: 20px;
+      }
+
+      &_img {
+        &_sel {
+          transform: rotate(180deg);
+        }
+      }
+
+      &_sel {
+        display: flex;
+        background: #FF6B03;
+        padding: 8px 38px 8px 23px;
+
+        &>p {
+          margin-left: 13px;
+          font-weight: normal;
+          font-size: 20px;
+        }
+      }
+    }
+
+    &_cnt {
+      &_el {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        padding: 0 38px 0 23px;
+
+        &_img {
+          transform: rotate(-90deg);
+          &_sel {
+            transform: rotate(-90deg);
+            fill: #3cacfe;
+            opacity: .3;
+          }
+        }
+
+        &>p {
+          margin-left: 18px;
+          font-weight: normal;
+          font-size: 20px;
+        }
+
+        &_sel {
+          background: #FF6B03;
+          width: 12px;
+          height: 12px;
+          border-radius: 100%;
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}

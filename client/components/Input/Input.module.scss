@@ -1,0 +1,25 @@
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  background: #F1F5F9;
+  border-radius: 5px;
+  width: 442px;
+  height: 51px;
+}
+
+.inputWrapper__input {
+  width: 85%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0 0 0 30px;
+  outline: none;
+  font-size: 17px;
+  line-height: 20px;
+}
+
+.inputWrapper__input_icon {
+  width: 34px;
+  height: 34px;
+  text-align: center;
+}
