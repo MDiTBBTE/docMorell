@@ -43,7 +43,7 @@ export const Board = () => {
         </div>
         <div className={styles.board_tabs}>
           {CONTENT.board.map((i) => (
-            <BoardTab {...i} />
+            <BoardTab key={i.title} {...i} />
           ))}
         </div>
       </div>

@@ -11,6 +11,10 @@ interface IHeaderProps {
   itemsCount?: number;
   itemsCountPrice?: number;
   categories: {}[];
+  isOpenCategoryDD: boolean;
+  handleOpenCategoryDD: () => void;
+  handleSetCatMenuFilters: (category: string) => void;
+  handleSetTypeMenuFilters: (type: string) => void;
 }
 
 export const Header: React.FC<IHeaderProps> = ({
@@ -18,6 +22,10 @@ export const Header: React.FC<IHeaderProps> = ({
   itemsCount = 2,
   itemsCountPrice = 93.56,
   categories,
+  isOpenCategoryDD,
+  handleOpenCategoryDD,
+  handleSetCatMenuFilters,
+  handleSetTypeMenuFilters,
 }) => {
   return (
     <div>
@@ -34,7 +42,13 @@ export const Header: React.FC<IHeaderProps> = ({
           <img src="/Account.svg" alt="account" width="auto" height="auto" />
         </div>
         <div className={styles.header__inner__down}>
-          <CategoryMenu isOpen={false} categories={categories} />
+          <CategoryMenu
+            isOpenDD={isOpenCategoryDD}
+            handleOpenCategoryDD={handleOpenCategoryDD}
+            categories={categories}
+            handleSetCatMenuFilters={handleSetCatMenuFilters}
+            handleSetTypeMenuFilters={handleSetTypeMenuFilters}
+          />
           <ul className={styles.header__inner__down__tabs}>
             {tabs.map((tab) => (
               <li key={tab} className={styles.header__inner__down__tabs_el}>

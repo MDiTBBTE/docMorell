@@ -12,6 +12,7 @@ import { CONTENT } from "../public/config.lang";
 import { PaymentBoard } from "../components/PaymentBoard/PaymentBoard";
 import { DeliveryBoard } from "../components/DeliveryBoard/DeliveryBoard";
 import { Board } from "../containers/Board/Board";
+import { fetchCategories } from "../store/actions-creators/category";
 
 const Index = () => {
   const { products, productError } = useTypedSelector((state) => state.product);
@@ -30,7 +31,7 @@ const Index = () => {
             <DeliveryBoard />
           </div>
           <div className={styles.main_cnt_right}>
-            <Catalog title={"Bestseller"} bestsellers={getBestSellers()} />
+            <Catalog title={"Bestseller"} products={getBestSellers()} />
             <FAQ faq={CONTENT.faq} />
           </div>
         </div>
@@ -46,5 +47,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
     const dispatch = store.dispatch as NextThunkDispatch;
     await dispatch(await fetchProducts());
     await dispatch(await fetchArticles());
+    await dispatch(await fetchCategories());
   }
 );

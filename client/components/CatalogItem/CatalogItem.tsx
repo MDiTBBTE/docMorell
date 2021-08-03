@@ -19,9 +19,3 @@ export const CatalogItem = ({ name, activeSubstance, description }) => {
     </div>
   );
 };
-
-// activeSubstance: "Sildenafil"
-// description: "Viagra restores potency in men who are not able to gain or maintain erection on the needed level..."
-// doses: "\"[{'dose':25,'packages':[{'count':10,'onePill':1.85,'price':18.45,'oldPrice':null,'bonus':4},{'count':20,'onePill':1.68,'price':33.56,'oldPrice':44.46,'bonus':4}]}]\""
-// isBestseller: true
-// name: "Viagra Tabletten "

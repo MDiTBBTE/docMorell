@@ -1,16 +1,25 @@
 import styles from "./DropDown.module.scss";
 import { getClassname } from "../../utils/utils";
+import { useRouter } from "next/router";
 
-export const DropDown = ({ category, types, isSelectedCat }) => {
+export const DropDown = ({
+  category,
+  types,
+  isSelectedCat,
+  handleSetCatMenuFilters,
+  handleSetTypeMenuFilters,
+}) => {
+  const router = useRouter();
   return (
     <div className={styles.dd}>
       <div className={styles.dd_inner}>
         <div
-          className={getClassname(
+          className={`${styles.dd_inner_header} ${getClassname(
             isSelectedCat,
             styles.dd_inner_header_sel,
-            styles.dd_inner_header
-          )}
+            styles.dd_inner_header_notSel
+          )}`}
+          onClick={() => handleSetCatMenuFilters(category)}
         >
           <img
             className={getClassname(
@@ -18,7 +27,7 @@ export const DropDown = ({ category, types, isSelectedCat }) => {
               styles.dd_inner_header_img_sel,
               styles.dd_inner_header_img
             )}
-            src="/dd_arrow.svg"
+            src={isSelectedCat ? "/dd_arrow-white.svg" : "/dd_arrow.svg"}
             alt="arrow"
           />
           <p>{category}</p>
@@ -26,13 +35,21 @@ export const DropDown = ({ category, types, isSelectedCat }) => {
         {isSelectedCat && (
           <div className={styles.dd_inner_cnt}>
             {types.map(({ name, isSelected }) => (
-              <div key={name} className={styles.dd_inner_cnt_el}>
+              <div
+                key={name}
+                className={styles.dd_inner_cnt_el}
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/catalog");
+                  handleSetTypeMenuFilters(name);
+                }}
+              >
                 <img
-                  className={getClassname(
+                  className={`${styles.dd_inner_cnt_el_img} ${getClassname(
                     isSelected,
-                    styles.dd_inner_cnt_el_img,
-                    styles.dd_inner_cnt_el_img_sel
-                  )}
+                    styles.dd_inner_cnt_el_img_sel,
+                    styles.dd_inner_cnt_el_img_notSel
+                  )}`}
                   src="/dd_arrow.svg"
                   alt="arrow"
                 />
@@ -40,8 +57,8 @@ export const DropDown = ({ category, types, isSelectedCat }) => {
                 <span
                   className={getClassname(
                     isSelected,
-                    styles.dd_inner_cnt_el,
-                    styles.dd_inner_cnt_el_sel
+                    styles.dd_inner_cnt_el_sel,
+                    styles.dd_inner_cnt_el
                   )}
                 />
               </div>

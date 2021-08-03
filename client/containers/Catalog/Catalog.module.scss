@@ -8,5 +8,10 @@
 
   &_cnt {
     margin-top: 42px;
+
+    &_inner {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }

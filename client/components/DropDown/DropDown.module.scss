@@ -7,9 +7,11 @@
       padding: 8px 38px 8px 23px;
 
       &>p {
-        margin-left: 13px;
+        font-style: normal;
         font-weight: normal;
         font-size: 20px;
+        line-height: 196.19%;
+        margin-left: 20px;
       }
 
       &_img {
@@ -24,10 +26,12 @@
         padding: 8px 38px 8px 23px;
 
         &>p {
-          margin-left: 13px;
-          font-weight: normal;
-          font-size: 20px;
+          color: #FFFFFF;
         }
+      }
+
+      &_notSel {
+
       }
     }
 
@@ -41,16 +45,16 @@
         &_img {
           transform: rotate(-90deg);
           &_sel {
-            transform: rotate(-90deg);
-            fill: #3cacfe;
             opacity: .3;
           }
         }
 
         &>p {
-          margin-left: 18px;
+          font-style: normal;
           font-weight: normal;
           font-size: 20px;
+          line-height: 196.19%;
+          margin-left: 20px;
         }
 
         &_sel {

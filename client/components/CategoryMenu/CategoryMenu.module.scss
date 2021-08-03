@@ -35,19 +35,11 @@
     background: #F5F7FA;
     text-align: center;
     line-height: 48px;
+    cursor: pointer;
   }
 
-  &_imgOpenWrapper {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    border-radius: 100%;
-    bottom: -23px;
-    left: 50%;
-    transform: translateX(-50%);
+  &_imgWrapper_open {
     background: #fff;
-    text-align: center;
-    line-height: 48px;
   }
 
   &_cnt {
