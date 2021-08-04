@@ -80,4 +80,12 @@ export const CONTENT = {
       img: "car.svg",
     },
   ],
+  Uber: [
+    {
+      title: "Alle Informationen zum Online-Apotheke",
+      text: "Wir liefern günstig und zuverlässig erstklassige Potenzmittel per Post." +
+        "Bei uns bestellen Sie bequem und schon wenige Tage später halten Sie Ihre Ware in den Händen." +
+        "Warum Sie bei uns, und bei keinem anderen Onlineshop, bestellen sollten erfahren Sie auf dieser Seite.",
+    }
+  ]
 };
