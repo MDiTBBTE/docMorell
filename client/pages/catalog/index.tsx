@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { NextThunkDispatch, wrapper } from "../../store";
 import { fetchProducts } from "../../store/actions-creators/product";
@@ -7,21 +7,20 @@ import { Catalog } from "../../containers/Catalog/Catalog";
 import { fetchCategories } from "../../store/actions-creators/category";
 
 export default function Index() {
-  const { products, productError } = useTypedSelector((state) => state.product);
-  console.log("products", products);
-  if (productError) {
-    return (
-      <div>
-        <h1>{productError}</h1>
-      </div>
-    );
-  }
+  const { products } = useTypedSelector((state) => state.product);
+  const {
+    filters: { type },
+  } = useTypedSelector((state) => state.category);
+
+  const filteredProducts = products.filter(
+    (e) => e.type.toLowerCase() === type.toLowerCase()
+  );
 
   return (
     <Layout>
       <div className="container">
         <div style={{ marginLeft: "280px" }}>
-          <Catalog title={"Viagra"} products={products} />
+          <Catalog title={type} products={filteredProducts} />
         </div>
       </div>
     </Layout>

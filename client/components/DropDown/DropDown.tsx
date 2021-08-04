@@ -40,7 +40,9 @@ export const DropDown = ({
                 className={styles.dd_inner_cnt_el}
                 onClick={(e) => {
                   e.preventDefault();
-                  router.push("/catalog");
+
+                  window.location.pathname !== "/catalog" &&
+                    router.push("/catalog");
                   handleSetTypeMenuFilters(name);
                 }}
               >

@@ -4,7 +4,6 @@ import { Header } from "../components/Header/Header";
 import { Footer } from "../components/Footer/Footer";
 import { CONTENT } from "../public/config.lang";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { useRouter } from "next/router";
 import {
   addFilters,
   changeCategories,
@@ -20,42 +19,56 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ title, children }) => {
   const dispatch = useDispatch();
-  // redux
   const { changedCategories } = useTypedSelector((state) => state.category);
-  // state
-  const router = useRouter();
+
   const [isOpenCategoryDD, setOpenCategoryDD] = useState(true);
-  const [menuFilters, setMenuFilters] = useState({
-    category: "",
-    type: "",
-  });
-  // open menu
   const handleOpenCategoryDD = () => setOpenCategoryDD(!isOpenCategoryDD);
-  //add menu options
+
   const handleSetCatMenuFilters = (category: string) => {
-    setMenuFilters({ ...menuFilters, category: category });
-  };
-  const handleSetTypeMenuFilters = (type: string) => {
-    setMenuFilters({ ...menuFilters, type: type });
-  };
-
-  useEffect(() => {
-    changeCategoryState(
-      changedCategories,
-      changeCategories,
-      dispatch,
-      menuFilters,
-      router
+    sessionStorage.setItem("category", category);
+    dispatch(addFilters({ category: category }));
+    dispatch(
+      changeCategories(
+        changedCategories.map((i) => ({
+          ...i,
+          isSelectedCat: i.category === category,
+        }))
+      )
     );
-  }, [isOpenCategoryDD, menuFilters]);
+  };
+
+  const handleSetTypeMenuFilters = (type: string) => {
+    sessionStorage.setItem("type", type);
+    dispatch(addFilters({ type: type }));
+    dispatch(
+      changeCategories(
+        changedCategories.map((cat) => ({
+          ...cat,
+          types: cat.types.map((e) => ({
+            ...e,
+            isSelected: e.name === type,
+          })),
+        }))
+      )
+    );
+  };
 
   useEffect(() => {
-    const filters = sessionStorage.getItem("filters");
-    console.log("filters", filters ? "t" : "f");
-    console.log("filters", JSON.parse(filters));
-    filters && setMenuFilters(JSON.parse(filters));
+    const category = sessionStorage.getItem("category");
+    const type = sessionStorage.getItem("type");
+
+    if (category || type) {
+      dispatch(
+        changeCategories(
+          changeCategoryState(changedCategories, { category, type })
+        )
+      );
+      dispatch(addFilters({ category: category, type: type }));
+    }
+
+    window.location.pathname.split("/")[2] && setOpenCategoryDD(false);
   }, []);
-  console.log("changedCategories", changedCategories);
+
   return (
     <>
       <Head>

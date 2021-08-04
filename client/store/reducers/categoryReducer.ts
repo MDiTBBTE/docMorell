@@ -27,9 +27,12 @@ export const categoryReducer = (
         changedCategories: changeCategoryStructure(action.payload),
       };
     case CategoryActionTypes.CHANGE_CATEGORIES:
-      return { ...state, changedCategories: action.payload };
+      return {
+        ...state,
+        changedCategories: action.payload,
+      };
     case CategoryActionTypes.ADD_CATEGORIES:
-      return { ...state, filters: action.payload };
+      return { ...state, filters: { ...state.filters, ...action.payload } };
     default:
       return state;
   }

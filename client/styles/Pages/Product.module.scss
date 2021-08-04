@@ -1,0 +1,102 @@
+.product {
+  &_inner {
+    margin-top: 85px;
+  }
+
+  &_info {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_title {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 37px;
+  }
+
+  &_activeSub {
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 196.19%;
+  }
+
+  &_right {
+    margin-left: 70px;
+    width: 45%;
+  }
+
+  &_table {
+    margin-top: 30px;
+
+    &_doses {
+      display: flex;
+      align-items: center;
+      &_el {
+        &:first-child {
+          font-weight: normal;
+          font-size: 16px;
+          text-transform: uppercase;
+        }
+
+        color: #091924;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 196.19%;
+        margin-right: 15px;
+
+        &_sel {
+          font-weight: 600;
+        }
+      }
+    }
+
+    &_dosesList {
+      &_el {
+        display: flex;
+        padding: 20px 0;
+        border-top: 1px solid #E7EAEF;
+
+        &:last-child {
+          border-bottom: 1px solid #E7EAEF;
+        }
+
+        &_input,
+        &_amount,
+        &_one,
+        &_old,
+        &_new {
+          margin-right: 15px;
+          width: 24%;
+
+          &>p {
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 196.19%;
+          }
+        }
+
+        &_input {
+          width: 5%;
+
+          &>input {
+            margin-top: 10px;
+            margin-left: 5px;
+          }
+        }
+
+        &_new {
+          margin-right: 0;
+
+          &>p {
+            color: #FF6B03;
+          }
+        }
+
+        &_old {
+          text-align: right;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}
