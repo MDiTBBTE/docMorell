@@ -176,4 +176,45 @@ export const CONTENT = {
       eightTitle: "Wie sicher sind die angebotenen Medikamente?",
      },
   ],
+  productTabNames: ["Beschreibung", "Sicherheit", "Nebenwirkungen", "Versand"],
+  productTabs: {
+    nebenwirkungen: {
+      title: "What should I watch for while taking this medicine?",
+      text:
+        "If you notice any changes in your vision while taking this drug, call your doctor or health care professional as soon as possible. Call your health care provider right away if you have any change in vision. Contact you doctor or health care professional right away if the erection lasts longer than 4 hours or if it becomes painful. This may be a sign of a serious problem and must be treated right away to prevent permanent damage. If you experience symptoms of nausea, dizziness, chest pain or arm pain upon initiation of sexual activity after taking this medicine, you should refrain from further activity and call your doctor or health care professional as soon as possible. Using this medicine does not protect you or your partner against HIV infection (the virus that causes AIDS) or other sexually transmitted diseases.",
+      titleSide: "What side effects may I notice from this medicine?",
+      arrSide: [
+        {
+          title:
+            "Side effects that you should report to your doctor or health care professional as soon as possible:",
+          arr: [
+            "allergic reactions like skin rash, itching or hives, swelling of the face, lips, or tongue",
+            "breathing problems",
+            "changes in hearing",
+            "changes in vision, blurred vision, trouble telling blue from green color",
+            "chest pain",
+            "fast, irregular heartbeat",
+            "men: prolonged or painful erection (lasting more than 4 hours)",
+            "seizures",
+          ],
+        },
+        {
+          title:
+            "Side effects that usually do not require medical attention (report to your doctor or health care professional if they continue or are bothersome):",
+          arr: [
+            "diarrhea",
+            "flushing",
+            "headache",
+            "indigestion",
+            "stuffy or runny nose",
+          ],
+        },
+        {
+          title:
+            "This list may not describe all possible side effects. Call your doctor for medical advice about side effects.",
+          arr: [],
+        },
+      ],
+    },
+  },
 };

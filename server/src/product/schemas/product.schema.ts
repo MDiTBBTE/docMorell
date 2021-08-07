@@ -21,7 +21,7 @@ export class Product {
   isBestseller: boolean;
 
   @Prop()
-  doses: string;
+  doses: [];
 
   @Prop()
   pillImage: string;

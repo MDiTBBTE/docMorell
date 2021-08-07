@@ -1,7 +1,6 @@
 import { Dispatch } from "react";
 import { CategoryAction, CategoryActionTypes } from "../../types/category";
 import axios from "axios";
-import { changeCategoryStructure } from "../../utils/utils";
 
 export const fetchCategories = () => {
   return async (dispatch: Dispatch<CategoryAction>) => {
