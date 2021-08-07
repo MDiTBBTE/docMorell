@@ -3,11 +3,15 @@ import { HYDRATE } from "next-redux-wrapper";
 import { categoryReducer } from "./categoryReducer";
 import { articleReducer } from "./articleReducer";
 import { productReducer } from "./productReducer";
+import { breadcrumbReducer } from "./breadcrumbReducer";
+import { cartReducer } from "./cartReducer";
 
 const rootReducer = combineReducers({
   category: categoryReducer,
   article: articleReducer,
   product: productReducer,
+  breadcrumb: breadcrumbReducer,
+  cart: cartReducer,
 });
 
 export const reducer = (state, action) => {

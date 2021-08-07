@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../components/Button/Button";
 import Layout from "../../layouts/Layout";
 import { CONTENT } from "../../public/config.lang";
 import styles from "../../components/BoardTab/BoardTab.module.scss";
-import { Board } from "../../containers/Board/Board";
-import { fontStyle, height, lineHeight, margin } from "@material-ui/system";
-import image from "next/image";
-import { StylesProvider } from "@material-ui/core";
-import { FormatSize } from "@material-ui/icons";
+import { useDispatch } from "react-redux";
+import { addBreadcrumb } from "../../store/actions-creators/breadcrumb";
+import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 
 const Uber = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const breadcrumbs = [
+      {
+        text: "Home",
+        route: "/",
+      },
+      {
+        text: "Über",
+        route: "",
+      },
+    ];
+    dispatch(addBreadcrumb(breadcrumbs));
+  }, []);
+
   return (
     <Layout>
       <div className="container">
-        <p style={{ paddingTop: "83px" }}>Home &gt; Über uns </p>
+        <Breadcrumbs />
         <div>
           <div
             style={{

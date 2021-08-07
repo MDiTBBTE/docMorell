@@ -13,7 +13,7 @@ export const CatalogItem = ({
     <div className={styles.catalogItem}>
       <div className={styles.catalogItem_inner}>
         <Link href={`/catalog/${_id}`}>
-          <div>
+          <div style={{ cursor: "pointer" }}>
             <h3 className={styles.catalogItem_title}>{name}</h3>
             <p className={styles.catalogItem_sub}>{activeSubstance}</p>
             <img

@@ -27,8 +27,8 @@ const routes = {
 
 export const Header: React.FC<IHeaderProps> = ({
   tabs,
-  itemsCount = 2,
-  itemsCountPrice = 93.56,
+  itemsCount = 0,
+  itemsCountPrice = 0,
   categories,
   isOpenCategoryDD,
   handleOpenCategoryDD,
@@ -46,8 +46,10 @@ export const Header: React.FC<IHeaderProps> = ({
             alt="Logo DocMorell"
             width="auto"
             height="auto"
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/")}
           />
-          <Input placeholder={"Suche mit Name"} />
+          <Input placeholder={"Suche mit Name"} style={{ height: "51px" }} />
           <p>EU +44-203-308-6749</p>
           <img src="/Account.svg" alt="account" width="auto" height="auto" />
         </div>
@@ -58,6 +60,7 @@ export const Header: React.FC<IHeaderProps> = ({
             categories={categories}
             handleSetCatMenuFilters={handleSetCatMenuFilters}
             handleSetTypeMenuFilters={handleSetTypeMenuFilters}
+            handleOpenCatalogPage={() => router.push("/catalog")}
           />
           <ul className={styles.header__inner__down__tabs}>
             {tabs.map((tab) => (
@@ -70,7 +73,10 @@ export const Header: React.FC<IHeaderProps> = ({
               </li>
             ))}
           </ul>
-          <div className={styles.header__inner__down__bucket}>
+          <div
+            className={styles.header__inner__down__bucket}
+            onClick={() => router.push("/cart")}
+          >
             <div className={styles.header__inner__down__bucket__circle}>
               <img
                 className={styles.header__inner__down__bucket__icon}

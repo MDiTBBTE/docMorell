@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layouts/Layout";
 import { CONTENT } from "../../public/config.lang";
-import styles from "../../components/BoardTab/BoardTab.module.scss";
+import { addBreadcrumb } from "../../store/actions-creators/breadcrumb";
+import { useDispatch } from "react-redux";
+import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 
 const Fragen = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const breadcrumbs = [
+      {
+        text: "Home",
+        route: "/",
+      },
+      {
+        text: "Häufige Fragen",
+        route: "",
+      },
+    ];
+    dispatch(addBreadcrumb(breadcrumbs));
+  }, []);
+
   return (
     <Layout>
       <div className="container">
-        <p style={{ paddingTop: "83px" }}>Home &gt; Häufige Fragen </p>
-
+        <Breadcrumbs />
         <div
           style={{
             width: "731px",

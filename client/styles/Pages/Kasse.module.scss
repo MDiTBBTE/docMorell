@@ -1,0 +1,145 @@
+.kasse {
+  &_inner {
+
+  }
+
+  &_rech {
+    &_title {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+    }
+
+    &_fields {
+      width: 100%;
+      display: flex;
+      margin-top: 52px;
+
+      &_l {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+
+        &_el {
+            &_p {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 30px;
+
+              &:first-child {
+                margin-top: 0;
+              }
+
+              &>div {
+                width: 50%;
+
+                &:first-child {
+                  margin-right: 30px;
+                }
+              }
+
+              &:nth-child(2n) {
+                &>div {
+                  width: 100%;
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+      }
+
+      &_r {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
+
+        &>div {
+          margin-top: 30px;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &_delivery {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+
+    &_title {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+      margin-right: 60px;
+    }
+
+    &_check {
+      display: flex;
+      align-items: center;
+
+      &_text {
+        margin-left: 9px;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 155.4%;
+      }
+    }
+  }
+
+  &_zahl {
+    margin-bottom: 130px;
+
+    &_title {
+      margin-top: 82px;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+    }
+
+    &_fields {
+      margin-top: 52px;
+      display: flex;
+
+      &_left {
+        width: 50%;
+        margin-right: 30px;
+
+        &_p {
+          display: flex;
+          margin-top: 30px;
+
+          &>div {
+            width: 50%;
+            margin-right: 30px;
+
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+      &_right {
+        width: 50%;
+
+        &_p {
+          display: flex;
+          margin-top: 30px;
+
+          &>div {
+            width: 50%;
+            margin-right: 30px;
+
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

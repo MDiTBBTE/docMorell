@@ -12,19 +12,38 @@ import { addFilters } from "../../store/actions-creators/category";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import CustomizedCheckbox from "../../components/Checkbox/Checkbox";
+import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
+import { changeCart } from "../../store/actions-creators/cart";
+import { addBreadcrumb } from "../../store/actions-creators/breadcrumb";
 
 const ProductPage = ({ product }) => {
-  const router = useRouter();
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const { filters } = useTypedSelector((state) => state.category);
+  const { carts } = useTypedSelector((state) => state.cart);
+
   const [productState, setProductState] = useState(null);
   const [selDose, setSelDose] = useState(null);
-
+  console.log("cart", carts && carts);
   const handleSelDose = (dose) => setSelDose(dose);
 
+  const handleOrder = () => {
+    const cartLS = localStorage.getItem("cart");
+    const cart = cartLS
+      ? JSON.parse(cartLS).map((e) =>
+          e._id === productState._id ? productState : e
+        )
+      : [productState];
+    console.log(cart);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    dispatch(changeCart(cart));
+
+    router.push("/cart");
+  };
+
   const handleSelPackages = (count) => {
-    const selArrLS = localStorage.getItem("cart");
     const selArr = [];
 
     const dosesObj = {
@@ -50,13 +69,7 @@ const ProductPage = ({ product }) => {
       ),
       dosesList: productState.doses.map((e) => e.dose),
     };
-    console.log(selArr);
-    localStorage.setItem(
-      "cart",
-      selArrLS
-        ? JSON.stringify([...JSON.parse(selArrLS), ...selArr])
-        : JSON.stringify(selArr)
-    );
+
     setProductState({ ...product, ...dosesObj });
   };
 
@@ -84,11 +97,33 @@ const ProductPage = ({ product }) => {
     }
   }, [filters.type]);
 
+  useEffect(() => {
+    const type = sessionStorage.getItem("type");
+
+    if (productState) {
+      const breadcrumbs = [
+        {
+          text: "Home",
+          route: "/",
+        },
+        {
+          text: type,
+          route: "/catalog",
+        },
+        {
+          text: productState.name,
+          route: "",
+        },
+      ];
+      dispatch(addBreadcrumb(breadcrumbs));
+    }
+  }, [productState]);
   console.log("productState", productState);
   return (
     <Layout>
       {productState && (
         <div className="container">
+          <Breadcrumbs />
           <div className={styles.product_inner}>
             <div className={styles.product_info}>
               <div className={styles.product_left}>
@@ -169,7 +204,7 @@ const ProductPage = ({ product }) => {
                 <Button
                   text={"ZUM WARENKORB HINZUFÜGENIN"}
                   style={{ marginTop: "24px", width: "100%" }}
-                  handleClick={() => router.push("/cart")}
+                  handleClick={handleOrder}
                 />
               </div>
             </div>

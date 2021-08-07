@@ -10,6 +10,8 @@ import {
 } from "../store/actions-creators/category";
 import { useDispatch } from "react-redux";
 import { changeCategoryState } from "../utils/utils";
+import { changeCart } from "../store/actions-creators/cart";
+import { useRouter } from "next/router";
 
 interface LayoutProps {
   title?: string;
@@ -19,11 +21,14 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ title, children }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const { changedCategories, filters } = useTypedSelector(
     (state) => state.category
   );
+  const { carts } = useTypedSelector((state) => state.cart);
 
-  const [isOpenCategoryDD, setOpenCategoryDD] = useState(true);
+  const [isOpenCategoryDD, setOpenCategoryDD] = useState(false);
   const handleOpenCategoryDD = () => setOpenCategoryDD(!isOpenCategoryDD);
 
   const handleSetCatMenuFilters = (category: string) => {
@@ -67,9 +72,19 @@ const Layout: React.FC<LayoutProps> = ({ title, children }) => {
       );
       dispatch(addFilters({ category: category, type: type }));
     }
+  }, [filters.type, isOpenCategoryDD]);
 
-    window.location.pathname.split("/")[2] && setOpenCategoryDD(false);
-  }, [filters.type]);
+  useEffect(() => {
+    if (
+      window.location.pathname.split("/")[1] === "" ||
+      window.location.pathname.split("/")[1] === "catalog"
+    ) {
+      setOpenCategoryDD(true);
+    }
+
+    const cartLS = localStorage.getItem("cart");
+    cartLS && dispatch(changeCart(JSON.parse(cartLS)));
+  }, [isOpenCategoryDD, router]);
 
   return (
     <>
@@ -94,6 +109,7 @@ const Layout: React.FC<LayoutProps> = ({ title, children }) => {
           handleOpenCategoryDD={handleOpenCategoryDD}
           handleSetCatMenuFilters={handleSetCatMenuFilters}
           handleSetTypeMenuFilters={handleSetTypeMenuFilters}
+          itemsCount={carts ? carts.length : 0}
         />
       )}
       <div>{children}</div>
