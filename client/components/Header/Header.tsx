@@ -5,6 +5,7 @@ import { Input } from "../Input/Input";
 // Styles
 import styles from "./Header.module.scss";
 import { CategoryMenu } from "../CategoryMenu/CategoryMenu";
+import { useRouter } from "next/router";
 
 interface IHeaderProps {
   tabs: string[];
@@ -17,6 +18,13 @@ interface IHeaderProps {
   handleSetTypeMenuFilters: (type: string) => void;
 }
 
+const routes = {
+  Über: "uber",
+  "Häufige Fragen": "haufige-fragen",
+  Artikel: "artikel",
+  Kontakte: "kontakte",
+};
+
 export const Header: React.FC<IHeaderProps> = ({
   tabs,
   itemsCount = 2,
@@ -27,6 +35,8 @@ export const Header: React.FC<IHeaderProps> = ({
   handleSetCatMenuFilters,
   handleSetTypeMenuFilters,
 }) => {
+  const router = useRouter();
+
   return (
     <div>
       <div className={`container ${styles.header__inner}`}>
@@ -51,7 +61,11 @@ export const Header: React.FC<IHeaderProps> = ({
           />
           <ul className={styles.header__inner__down__tabs}>
             {tabs.map((tab) => (
-              <li key={tab} className={styles.header__inner__down__tabs_el}>
+              <li
+                key={tab}
+                className={styles.header__inner__down__tabs_el}
+                onClick={() => router.push(routes[tab])}
+              >
                 {tab}
               </li>
             ))}

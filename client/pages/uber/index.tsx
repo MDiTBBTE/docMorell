@@ -50,20 +50,18 @@ const Uber = () => {
             }}
           >
             {CONTENT.uberCard.map((p) => (
-              <div style={{ width: "311px" }}>
+              <div style={{ width: "33,33%" }}>
                 <div
                   className={styles.boardTab_imgWrapper}
-                  style={{ flexDirection: "column", width: "311px" }}
+                  style={{
+                    width: "87px",
+                    height: "87px",
+                    borderRadius: "100%",
+                    boxShadow: "0px 5px 35px rgba(39, 44, 47, 0.1)",
+                    margin: "0 auto",
+                  }}
                 >
-                  <img
-                    src={`/board/${p.img}`}
-                    style={{
-                      borderRadius: "100%",
-                      width: "87px",
-                      height: "87px",
-                      boxShadow: "0px 5px 35px rgba(39, 44, 47, 0.1)",
-                    }}
-                  />
+                  <img src={`/board/${p.img}`} />
                 </div>
                 <div style={{ flexDirection: "column", width: "311px" }}>
                   <h3>{p.title}</h3>
