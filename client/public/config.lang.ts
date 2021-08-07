@@ -121,4 +121,24 @@ export const CONTENT = {
       ],
     },
   },
+  cart: {
+    title: "Dein Warenkorb",
+    products: [],
+    shippingMethod: [
+      {
+        title: "AirMail",
+        price: "17€",
+        text:
+          "Actual delivery time may vary, and it may take up to 2-3 weeks for Air Mail. Online Tracking is not available.\n" +
+          "Free AirMail shipping available for orders over $200.",
+      },
+      {
+        title: "EMS",
+        price: "23€",
+        text:
+          "Express Mail Service (EMS) is the fastest service provided by post office. Tracking Number will become available when your order is shipped. The Approximate delivery time 5-9 days business days.\n" +
+          "Free Trackable Courier Service shipping available for orders over $200.",
+      },
+    ],
+  },
 };

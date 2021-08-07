@@ -9,11 +9,11 @@ import {
   fetchCategories,
 } from "../../store/actions-creators/category";
 import { useDispatch } from "react-redux";
+import { CONTENT } from "../../public/config.lang";
 
 export default function Index() {
   const dispatch = useDispatch();
 
-  const { products } = useTypedSelector((state) => state.product);
   const {
     filters: { type },
   } = useTypedSelector((state) => state.category);
@@ -26,29 +26,28 @@ export default function Index() {
 
     if (category || type) {
       dispatch(addFilters({ category: category, type: type }));
-      setFilteredProducts(
-        products.filter((e) => e.type.toLowerCase() === type.toLowerCase())
-      );
     }
   }, [type]);
 
+  useEffect(() => {
+    const items = localStorage.getItem("cart");
+    console.log(JSON.parse(items));
+  });
   return (
     <Layout>
       <div className="container">
         <div style={{ marginLeft: "280px" }}>
-          {filteredProducts && (
-            <Catalog title={type} products={filteredProducts} />
-          )}
+          <h2>{CONTENT.cart.title}</h2>
         </div>
       </div>
     </Layout>
   );
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  async ({ store }) => {
-    const dispatch = store.dispatch as NextThunkDispatch;
-    await dispatch(await fetchProducts());
-    await dispatch(await fetchCategories());
-  }
-);
+// export const getServerSideProps = wrapper.getServerSideProps(
+//     async ({ store }) => {
+//         const dispatch = store.dispatch as NextThunkDispatch;
+//         await dispatch(await fetchProducts());
+//         await dispatch(await fetchCategories());
+//     }
+// );

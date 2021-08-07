@@ -19,7 +19,9 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ title, children }) => {
   const dispatch = useDispatch();
-  const { changedCategories } = useTypedSelector((state) => state.category);
+  const { changedCategories, filters } = useTypedSelector(
+    (state) => state.category
+  );
 
   const [isOpenCategoryDD, setOpenCategoryDD] = useState(true);
   const handleOpenCategoryDD = () => setOpenCategoryDD(!isOpenCategoryDD);
@@ -67,7 +69,7 @@ const Layout: React.FC<LayoutProps> = ({ title, children }) => {
     }
 
     window.location.pathname.split("/")[2] && setOpenCategoryDD(false);
-  }, []);
+  }, [filters.type]);
 
   return (
     <>
@@ -84,14 +86,16 @@ const Layout: React.FC<LayoutProps> = ({ title, children }) => {
         {/*<meta name="keywords" content={keywords || "Музыка, треки, артисты"} />*/}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Header
-        tabs={CONTENT.tabs}
-        categories={changedCategories}
-        isOpenCategoryDD={isOpenCategoryDD}
-        handleOpenCategoryDD={handleOpenCategoryDD}
-        handleSetCatMenuFilters={handleSetCatMenuFilters}
-        handleSetTypeMenuFilters={handleSetTypeMenuFilters}
-      />
+      {filters && (
+        <Header
+          tabs={CONTENT.tabs}
+          categories={changedCategories}
+          isOpenCategoryDD={isOpenCategoryDD}
+          handleOpenCategoryDD={handleOpenCategoryDD}
+          handleSetCatMenuFilters={handleSetCatMenuFilters}
+          handleSetTypeMenuFilters={handleSetTypeMenuFilters}
+        />
+      )}
       <div>{children}</div>
       <Footer isWhite={false} tabs={CONTENT.tabs} />
     </>

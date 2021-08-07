@@ -8,17 +8,66 @@ import { Button } from "../../components/Button/Button";
 import { ProductTabs } from "../../containers/ProductTabs/ProductTabs";
 
 import styles from "../../styles/Pages/Product.module.scss";
+import { addFilters } from "../../store/actions-creators/category";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import CustomizedCheckbox from "../../components/Checkbox/Checkbox";
 
 const ProductPage = ({ product }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const { filters } = useTypedSelector((state) => state.category);
   const [productState, setProductState] = useState(null);
   const [selDose, setSelDose] = useState(null);
+
+  const handleSelDose = (dose) => setSelDose(dose);
+
+  const handleSelPackages = (count) => {
+    const selArrLS = localStorage.getItem("cart");
+    const selArr = [];
+
+    const dosesObj = {
+      doses: productState.doses.map((d) =>
+        d.dose === selDose
+          ? {
+              ...d,
+              packages: d.packages.map((e) => {
+                e.count === count && selArr.push({ ...d, packages: [e] });
+                return {
+                  ...e,
+                  isSelected: e.count === count,
+                };
+              }),
+            }
+          : {
+              ...d,
+              packages: d.packages.map((e) => ({
+                ...e,
+                isSelected: false,
+              })),
+            }
+      ),
+      dosesList: productState.doses.map((e) => e.dose),
+    };
+    console.log(selArr);
+    localStorage.setItem(
+      "cart",
+      selArrLS
+        ? JSON.stringify([...JSON.parse(selArrLS), ...selArr])
+        : JSON.stringify(selArr)
+    );
+    setProductState({ ...product, ...dosesObj });
+  };
 
   useEffect(() => {
     const doses = JSON.parse(product.doses);
 
     const dosesObj = {
-      doses: doses,
+      doses: doses.map((e) => ({
+        ...e,
+        packages: e.packages.map((e) => ({ ...e, isSelected: false })),
+      })),
       dosesList: doses.map((e) => e.dose),
     };
 
@@ -26,6 +75,16 @@ const ProductPage = ({ product }) => {
     setSelDose(doses[0].dose);
   }, [product]);
 
+  useEffect(() => {
+    const category = sessionStorage.getItem("category");
+    const type = sessionStorage.getItem("type");
+
+    if (category || type) {
+      dispatch(addFilters({ category: category, type: type }));
+    }
+  }, [filters.type]);
+
+  console.log("productState", productState);
   return (
     <Layout>
       {productState && (
@@ -57,6 +116,7 @@ const ProductPage = ({ product }) => {
                         className={`${styles.product_table_doses_el} ${
                           e === selDose && styles.product_table_doses_el_sel
                         }`}
+                        onClick={() => handleSelDose(e)}
                       >
                         {e}mg
                       </li>
@@ -69,11 +129,12 @@ const ProductPage = ({ product }) => {
                         <li
                           key={e.price}
                           className={styles.product_table_dosesList_el}
+                          onClick={() => handleSelPackages(e.count)}
                         >
                           <div
                             className={styles.product_table_dosesList_el_input}
                           >
-                            <input type="checkbox" />
+                            <CustomizedCheckbox isChecked={e.isSelected} />
                           </div>
                           <div
                             className={styles.product_table_dosesList_el_amount}
@@ -108,6 +169,7 @@ const ProductPage = ({ product }) => {
                 <Button
                   text={"ZUM WARENKORB HINZUFÜGENIN"}
                   style={{ marginTop: "24px", width: "100%" }}
+                  handleClick={() => router.push("/cart")}
                 />
               </div>
             </div>
