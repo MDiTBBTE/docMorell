@@ -136,6 +136,44 @@ export const CONTENT = {
         "It's absolutely secure to place orders with us as our secure billing system makes sure that all your information is kept private and safe." +
         "There is no need to worry when you order from us. If there is a problem with your order (which there rarely is), like being stopped at customs or get lost by the shipping company, contact us immediately." +
         "We will work out a plan to either reship your order or refund your money. Our main concern is your satisfaction!"
-    }
-   ]
+    },
+  ],
+   Fragen: [
+    {
+      title: " Online-Apotheke stellte häufig Fragen",
+      text: "Klicken Sie auf die folgenden Fragen, um Antworten auf einige häufig gestellte Patientenfragen zu erhalten"
+    },
+  ],
+  FragenCnt: [
+    {
+      title: "Wie kann ich eine Bestellung erfassen?",
+      secondTitle: "Wie geht es nach dem Erfassen meiner Bestellung weiter?",
+      thirdTitle: "Wie schnell erfolgt der Versand?",
+      fourTitle: "Welche Zahlungsarten werden akzeptiert?",
+      fiveTitle: "Welche Stornierungsfristen gelten bei einer Bestellung?",
+      sixTitle: "Wie schnell erfolgt der Versand?",
+      sevenTitle: "Welche Zahlungsarten werden akzeptiert?",
+      eightTitle: "Welche Stornierungsfristen gelten bei einer Bestellung?",
+     },
+  ],
+  SecondFragenCnt: [
+    {
+      title: "Welche Versandkosten fallen an?",
+      secondTitle: "Versenden Sie auch ins Ausland?",
+      thirdTitle: "Welche Versandmöglichkeiten bieten Sie an?",
+      fourTitle: "Kann ich auch telefonisch eine Bestellung aufgeben?",
+     },
+  ],
+  ThirdFragenCnt: [
+    {
+      title: "Sind meine persönlichen Daten sicher?",
+      secondTitle: "Wie sicher sind die angebotenen Medikamente?",
+      thirdTitle: "Wie sicher sind die angebotenen Medikamente?",
+      fourTitle: "Gibt es die Möglichkeit einer Online-Beratung?",
+      fiveTitle: "Wie sicher sind die angebotenen Medikamente?",
+      sixTitle: "Gibt es die Möglichkeit einer Online-Beratung?",
+      sevenTitle: "Sind meine persönlichen Daten sicher?",
+      eightTitle: "Wie sicher sind die angebotenen Medikamente?",
+     },
+  ],
 };
