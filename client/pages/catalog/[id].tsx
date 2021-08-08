@@ -8,13 +8,17 @@ import { Button } from "../../components/Button/Button";
 import { ProductTabs } from "../../containers/ProductTabs/ProductTabs";
 
 import styles from "../../styles/Pages/Product.module.scss";
-import { addFilters } from "../../store/actions-creators/category";
+import {
+  addFilters,
+  fetchCategories,
+} from "../../store/actions-creators/category";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import CustomizedCheckbox from "../../components/Checkbox/Checkbox";
+import Checkbox from "../../components/Checkbox/Checkbox";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 import { changeCart } from "../../store/actions-creators/cart";
 import { addBreadcrumb } from "../../store/actions-creators/breadcrumb";
+import { NextThunkDispatch, wrapper } from "../../store";
 
 const ProductPage = ({ product }) => {
   const dispatch = useDispatch();
@@ -25,7 +29,7 @@ const ProductPage = ({ product }) => {
 
   const [productState, setProductState] = useState(null);
   const [selDose, setSelDose] = useState(null);
-  console.log("cart", carts && carts);
+
   const handleSelDose = (dose) => setSelDose(dose);
 
   const handleOrder = () => {
@@ -99,6 +103,7 @@ const ProductPage = ({ product }) => {
 
   useEffect(() => {
     const type = sessionStorage.getItem("type");
+    const query = sessionStorage.getItem("query");
 
     if (productState) {
       const breadcrumbs = [
@@ -107,7 +112,7 @@ const ProductPage = ({ product }) => {
           route: "/",
         },
         {
-          text: type,
+          text: query || type,
           route: "/catalog",
         },
         {
@@ -118,7 +123,7 @@ const ProductPage = ({ product }) => {
       dispatch(addBreadcrumb(breadcrumbs));
     }
   }, [productState]);
-  console.log("productState", productState);
+
   return (
     <Layout>
       {productState && (
@@ -127,6 +132,13 @@ const ProductPage = ({ product }) => {
           <div className={styles.product_inner}>
             <div className={styles.product_info}>
               <div className={styles.product_left}>
+                {productState.pillImage && (
+                  <img
+                    className={styles.product_left_img}
+                    src={`http://localhost:5000/${productState.pillImage}`}
+                    alt=""
+                  />
+                )}
                 <img
                   src={`http://localhost:5000/${productState.packageImage}`}
                   alt="product-image"
@@ -169,7 +181,7 @@ const ProductPage = ({ product }) => {
                           <div
                             className={styles.product_table_dosesList_el_input}
                           >
-                            <CustomizedCheckbox isChecked={e.isSelected} />
+                            <Checkbox isChecked={e.isSelected || false} />
                           </div>
                           <div
                             className={styles.product_table_dosesList_el_amount}
@@ -218,15 +230,19 @@ const ProductPage = ({ product }) => {
 
 export default ProductPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  console.log("params.id", params.id);
-  const response = await axios.get(
-    "http://localhost:5000/product/" + params.id
-  );
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store, params }) => {
+    const dispatch = store.dispatch as NextThunkDispatch;
+    await dispatch(await fetchCategories());
 
-  return {
-    props: {
-      product: response.data,
-    },
-  };
-};
+    const response = await axios.get(
+      "http://localhost:5000/product/" + params.id
+    );
+
+    return {
+      props: {
+        product: response.data,
+      },
+    };
+  }
+);

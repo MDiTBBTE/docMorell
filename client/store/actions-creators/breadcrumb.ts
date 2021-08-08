@@ -1,7 +1,4 @@
-import {
-  BreadcrumbAction,
-  BreadcrumbActionTypes,
-} from "../../types/breadcrumb";
+import { BreadcrumbActionTypes } from "../../types/breadcrumb";
 
 export const addBreadcrumb = (breadcrumbs) => {
   return {

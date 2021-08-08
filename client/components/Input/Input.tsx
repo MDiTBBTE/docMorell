@@ -1,12 +1,18 @@
 import React from "react";
 import styles from "./Input.module.scss";
+import { useRouter } from "next/router";
 
 interface InputProps {
   title?: string;
   placeholder?: string;
+  type?: string;
   isIcon?: boolean;
   style?: {};
   inputStyles?: {};
+  value?: string;
+  handleChange?: (value: string) => void;
+  handleSearchRequest?: () => void;
+  maxLength?: number;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -15,7 +21,14 @@ export const Input: React.FC<InputProps> = ({
   isIcon = true,
   style,
   inputStyles,
+  value,
+  handleChange,
+  maxLength,
+  type,
+  handleSearchRequest,
 }) => {
+  const router = useRouter();
+
   return (
     <div className={styles.input} style={inputStyles}>
       {title && <p className={styles.input_text}>{title}</p>}
@@ -30,8 +43,11 @@ export const Input: React.FC<InputProps> = ({
               : styles.input_inputWrapper_inputWithout
           }
           placeholder={placeholder}
-          type="text"
           style={style}
+          value={value}
+          onChange={({ target }) => handleChange(target.value)}
+          maxLength={maxLength}
+          type={type || "text"}
         />
         {isIcon && (
           <img
@@ -40,6 +56,12 @@ export const Input: React.FC<InputProps> = ({
             alt="search_icon"
             width="auto"
             height="auto"
+            onClick={() => {
+              if (value.trim().length > 0) {
+                handleSearchRequest();
+                router.push("/catalog");
+              }
+            }}
           />
         )}
       </div>

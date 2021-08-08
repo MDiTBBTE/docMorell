@@ -69,10 +69,14 @@
             }
           }
 
-          &_amoun {
+          &_amount {
             font-weight: 600;
             font-size: 17px;
-            line-height: 196.19%;
+          }
+
+          &_price {
+            font-weight: 600;
+            font-size: 17px;
           }
 
           &:first-child {

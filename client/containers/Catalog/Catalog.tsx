@@ -7,8 +7,8 @@ export const Catalog = ({ title, products }) => {
       <h2 className={styles.catalog_title}>{title}</h2>
       <div className={styles.catalog_cnt}>
         <div className={styles.catalog_cnt_inner}>
-          {products.map((item) => (
-            <CatalogItem key={item.name} {...item} />
+          {products.map((item, idx) => (
+            <CatalogItem key={`${idx.toString()}_${item.name}`} {...item} />
           ))}
         </div>
       </div>

@@ -1,26 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "../../layouts/Layout";
-import { useDispatch } from "react-redux";
-import { addBreadcrumb } from "../../store/actions-creators/breadcrumb";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
+import { NextThunkDispatch, wrapper } from "../../store";
+import { fetchCategories } from "../../store/actions-creators/category";
 
-const Uber = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const breadcrumbs = [
-      {
-        text: "Home",
-        route: "/",
-      },
-      {
-        text: "Artikel",
-        route: "",
-      },
-    ];
-    dispatch(addBreadcrumb(breadcrumbs));
-  }, []);
-
+const Artikel = () => {
   return (
     <Layout>
       <div className="container">
@@ -30,4 +14,11 @@ const Uber = () => {
   );
 };
 
-export default Uber;
+export default Artikel;
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    const dispatch = store.dispatch as NextThunkDispatch;
+    await dispatch(await fetchCategories());
+  }
+);

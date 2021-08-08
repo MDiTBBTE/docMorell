@@ -1,27 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "../../layouts/Layout";
 import { CONTENT } from "../../public/config.lang";
-import { addBreadcrumb } from "../../store/actions-creators/breadcrumb";
-import { useDispatch } from "react-redux";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
+import { NextThunkDispatch, wrapper } from "../../store";
+import { fetchCategories } from "../../store/actions-creators/category";
 
 const Fragen = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const breadcrumbs = [
-      {
-        text: "Home",
-        route: "/",
-      },
-      {
-        text: "Häufige Fragen",
-        route: "",
-      },
-    ];
-    dispatch(addBreadcrumb(breadcrumbs));
-  }, []);
-
   return (
     <Layout>
       <div className="container">
@@ -268,3 +252,10 @@ const Fragen = () => {
 };
 
 export default Fragen;
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    const dispatch = store.dispatch as NextThunkDispatch;
+    await dispatch(await fetchCategories());
+  }
+);

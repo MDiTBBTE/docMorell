@@ -17,7 +17,7 @@ import { fetchCategories } from "../store/actions-creators/category";
 const Index = () => {
   const { products, productError } = useTypedSelector((state) => state.product);
   const { articles, articleError } = useTypedSelector((state) => state.article);
-  console.log("products", products);
+
   const getBestSellers = () => products.filter((i) => i.isBestseller);
 
   return (

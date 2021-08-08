@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Layout from "../../layouts/Layout";
 import styles from "../../styles/Pages/Cart.module.scss";
-import { addFilters } from "../../store/actions-creators/category";
+import {
+  addFilters,
+  fetchCategories,
+} from "../../store/actions-creators/category";
 import { useDispatch } from "react-redux";
 import { CONTENT } from "../../public/config.lang";
 import CustomizedCheckbox from "../../components/Checkbox/Checkbox";
@@ -10,7 +13,7 @@ import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
 import { useRouter } from "next/router";
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
-import { addBreadcrumb } from "../../store/actions-creators/breadcrumb";
+import { NextThunkDispatch, wrapper } from "../../store";
 
 export default function Index() {
   const dispatch = useDispatch();
@@ -21,6 +24,15 @@ export default function Index() {
   } = useTypedSelector((state) => state.category);
 
   const [products, setProducts] = useState(null);
+  const [voucher, setVoucher] = useState("");
+  const [shippingMethods, setShippingMethods] = useState({
+    AirMail: false,
+    EMS: false,
+  });
+
+  const handleSetShippingMethods = (name) => {
+    setShippingMethods({ ...shippingMethods, [name]: !shippingMethods[name] });
+  };
 
   useEffect(() => {
     const category = sessionStorage.getItem("category");
@@ -34,21 +46,7 @@ export default function Index() {
   useEffect(() => {
     const items = localStorage.getItem("cart");
     items ? setProducts(JSON.parse(items)) : router.push("/");
-
-    const breadcrumbs = [
-      {
-        text: "Home",
-        route: "/",
-      },
-      {
-        text: "Warenkorb",
-        route: "/cart",
-      },
-    ];
-    dispatch(addBreadcrumb(breadcrumbs));
   }, []);
-
-  console.log("products", products);
 
   return (
     <Layout>
@@ -64,8 +62,11 @@ export default function Index() {
                 <p className={styles.cart_products_header_el}>Price</p>
               </div>
               <ul className={styles.cart_products_list}>
-                {products.map((e) => (
-                  <li className={styles.cart_products_list_el}>
+                {products.map((e, idx) => (
+                  <li
+                    key={`${idx.toString()}`}
+                    className={styles.cart_products_list_el}
+                  >
                     <div className={styles.cart_products_list_el_p}>
                       <img
                         className={styles.cart_products_list_el_p_img}
@@ -94,7 +95,9 @@ export default function Index() {
                       <img src="/plus.svg" alt="" />
                     </div>
                     <div className={styles.cart_products_list_el_p}>
-                      <p>93.56€</p>
+                      <p className={styles.cart_products_list_el_p_price}>
+                        93.56€
+                      </p>
                     </div>
                   </li>
                 ))}
@@ -106,13 +109,17 @@ export default function Index() {
               <h3 className={styles.cart_shipping_title}>
                 {CONTENT.cart.shippingMethodTitle}
               </h3>
-              {CONTENT.cart.shippingMethod.map((e) => (
-                <div className={styles.cart_shipping_list_el}>
-                  <CustomizedCheckbox isChecked={false} />
+              {CONTENT.cart.shippingMethod.map((e, idx) => (
+                <div
+                  key={`${idx.toString()}_${e.title}`}
+                  className={styles.cart_shipping_list_el}
+                >
+                  <div onClick={() => handleSetShippingMethods(e.title)}>
+                    <CustomizedCheckbox isChecked={shippingMethods[e.title]} />
+                  </div>
                   <div>
                     <div className={styles.cart_shipping_header}>
                       <p className={styles.cart_shipping_header_title}>
-                        {" "}
                         {e.title}
                       </p>
                       <span className={styles.cart_shipping_header_price}>
@@ -135,7 +142,9 @@ export default function Index() {
               <Input
                 isIcon={false}
                 placeholder={CONTENT.cart.gutschein.placeHolder}
-                style={{ height: "56px" }}
+                style={{ height: "56px", width: "351px" }}
+                value={voucher}
+                handleChange={(value) => setVoucher(value)}
               />
               <Button
                 text={CONTENT.cart.gutschein.btnName}
@@ -173,3 +182,10 @@ export default function Index() {
     </Layout>
   );
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    const dispatch = store.dispatch as NextThunkDispatch;
+    await dispatch(await fetchCategories());
+  }
+);

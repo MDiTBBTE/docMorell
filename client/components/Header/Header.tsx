@@ -14,15 +14,18 @@ interface IHeaderProps {
   categories: {}[];
   isOpenCategoryDD: boolean;
   handleOpenCategoryDD: () => void;
+  handleSearchRequest: () => void;
   handleSetCatMenuFilters: (category: string) => void;
   handleSetTypeMenuFilters: (type: string) => void;
+  query: string;
+  handleSearch: (type: string) => void;
 }
 
 const routes = {
-  Über: "uber",
-  "Häufige Fragen": "haufige-fragen",
-  Artikel: "artikel",
-  Kontakte: "kontakte",
+  Über: "/uber",
+  "Häufige Fragen": "/haufige-fragen",
+  Artikel: "/artikel",
+  Kontakte: "/kontakte",
 };
 
 export const Header: React.FC<IHeaderProps> = ({
@@ -34,6 +37,9 @@ export const Header: React.FC<IHeaderProps> = ({
   handleOpenCategoryDD,
   handleSetCatMenuFilters,
   handleSetTypeMenuFilters,
+  query,
+  handleSearch,
+  handleSearchRequest,
 }) => {
   const router = useRouter();
 
@@ -49,8 +55,14 @@ export const Header: React.FC<IHeaderProps> = ({
             style={{ cursor: "pointer" }}
             onClick={() => router.push("/")}
           />
-          <Input placeholder={"Suche mit Name"} style={{ height: "51px" }} />
-          <p>EU +44-203-308-6749</p>
+          <Input
+            placeholder={"Suche mit Name"}
+            style={{ height: "51px", width: "442px" }}
+            value={query}
+            handleChange={handleSearch}
+            handleSearchRequest={handleSearchRequest}
+          />
+          <p className={styles.header__inner__up_num}>EU +44-203-308-6749</p>
           <img src="/Account.svg" alt="account" width="auto" height="auto" />
         </div>
         <div className={styles.header__inner__down}>

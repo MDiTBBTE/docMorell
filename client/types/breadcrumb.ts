@@ -1,5 +1,5 @@
 export interface BreadcrumbsState {
-  breadcrumbs: { text: string; route: string }[];
+  breadcrumbs: { text: string; route: string }[] | null;
 }
 
 export enum BreadcrumbActionTypes {
@@ -8,7 +8,7 @@ export enum BreadcrumbActionTypes {
 
 interface AddBreadcrumbAction {
   type: BreadcrumbActionTypes.ADD_BREADCRUMB;
-  payload: string[];
+  payload: { text: string; route: string }[];
 }
 
 export type BreadcrumbAction = AddBreadcrumbAction;

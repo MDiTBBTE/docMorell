@@ -6,7 +6,7 @@ export const AsideArticleItem = ({ title, date, picture }) => {
       <div className={styles.asideArtItem_inner}>
         <img
           className={styles.asideArtItem_img}
-          src={`http://localhost:5000/${picture}`}
+          src={picture ? `http://localhost:5000/${picture}` : ""}
           alt="articleImage"
         />
         <div className={styles.asideArtItem_cnt}>

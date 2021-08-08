@@ -5,7 +5,7 @@ import {
 } from "../../types/breadcrumb";
 
 const initialState: BreadcrumbsState = {
-  breadcrumbs: ["Home"],
+  breadcrumbs: null,
 };
 
 export const breadcrumbReducer = (
