@@ -1,0 +1,65 @@
+.uber {
+  &_content {
+    width: 731px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 112px;
+  }
+  &_container {
+    width: 33.33%;
+    display: inline-block;
+  }
+  &_imgWrapper {
+    width: 87px;
+    height: 87px;
+    background: #fff;
+    border-radius: 100%;
+    margin: 0 auto;
+    margin-bottom: 18px;
+    box-shadow: 0px 5px 35px rgba(39, 44, 47, 0.1);
+  }
+
+  &_stylesText {
+    width: 311px;
+    margin: 0 auto;
+  }
+
+  &_button {
+    text-align: center;
+    width: 200px;
+    padding: 19px 52px;
+    background: #3cacfe;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 29px;
+  }
+
+  &_imgCards {
+    padding-top: 93px;
+    text-align: center;
+    padding-bottom: 198px;
+  }
+
+  &_h2 {
+    border-bottom: 1px solid #e7eaef;
+    padding-bottom: 30px;
+  }
+
+  &_info {
+    padding-top: 63px;
+    width: 967px;
+    margin-bottom: 67px;
+  }
+
+  &_h3 {
+    padding-top: 58px;
+  }
+
+  &_infoText {
+    padding-top: 30px;
+  }
+
+  &_img {
+      padding-top: 33%;
+  }
+}
