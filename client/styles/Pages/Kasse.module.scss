@@ -1,0 +1,257 @@
+.kasse {
+  &_inner {
+
+  }
+
+  &_main {
+    width: 85%;
+    margin: 0 auto;
+
+    &_title {
+      margin-top: 54px;
+      margin-bottom: 21px;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+      text-align: center;
+    }
+
+    &_cnt {
+
+      &_header {
+        display: flex;
+        border-bottom: 1px solid #BBC8D4;
+        margin-top: 34px;
+
+        &_el {
+          width: 15%;
+          font-weight: normal;
+          font-size: 17px;
+          line-height: 196.19%;
+          text-align: center;
+
+          &:first-child {
+            width: 70%;
+            text-align: left;
+          }
+        }
+      }
+
+      &_list {
+        margin-bottom: 22px;
+
+        &_el {
+          position: relative;
+          display: flex;
+          align-items: flex-start;
+          padding: 30px 0;
+          border-bottom: 1px solid #BBC8D4;
+
+
+          &_p {
+            display: flex;
+            width: 15%;
+
+            &_info {
+              display: flex;
+              flex-direction: column;
+
+              &_title {
+                font-weight: 500;
+                font-size: 19px;
+                line-height: 23px;
+              }
+            }
+
+            &_amount {
+              font-weight: 600;
+              font-size: 17px;
+            }
+
+            &_price {
+              font-weight: 600;
+              font-size: 17px;
+            }
+
+            &:first-child {
+              width: 70%;
+            }
+
+            &:nth-child(2n) {
+              justify-content: space-evenly;
+            }
+
+            &:nth-child(3n) {
+              justify-content: center;
+            }
+          }
+        }
+      }
+
+      &_footer {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+
+        &_cart {
+          font-weight: normal;
+          font-size: 19px;
+          line-height: 22px;
+          text-decoration-line: underline;
+          cursor: pointer;
+        }
+
+        &_price {
+          font-weight: 500;
+          font-size: 30px;
+          line-height: 35px;
+          color: #FF6B03;
+        }
+      }
+    }
+  }
+
+  &_rech {
+    margin-top: 123px;
+    &_title {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+    }
+
+    &_fields {
+      width: 100%;
+      display: flex;
+      margin-top: 52px;
+
+      &_l {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+
+        &_el {
+            &_p {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 30px;
+
+              &:first-child {
+                margin-top: 0;
+              }
+
+              &>div {
+                width: 50%;
+
+                &:first-child {
+                  margin-right: 30px;
+                }
+              }
+
+              &:nth-child(2n) {
+                &>div {
+                  width: 100%;
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+      }
+
+      &_r {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
+
+        &>div {
+          margin-top: 30px;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &_delivery {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+
+    &_title {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+      margin-right: 60px;
+    }
+
+    &_check {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &_text {
+        margin-left: 9px;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 155.4%;
+      }
+    }
+  }
+
+  &_zahl {
+    margin-bottom: 130px;
+
+    &_title {
+      margin-top: 82px;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 35px;
+    }
+
+    &_fields {
+      margin-top: 52px;
+      display: flex;
+
+      &_left {
+        width: 50%;
+        margin-right: 30px;
+
+        &_p {
+          display: flex;
+          align-items: flex-end;
+          margin-top: 30px;
+
+          &>div {
+            width: 50%;
+            margin-right: 30px;
+
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+      &_right {
+        width: 50%;
+
+        &_p {
+          display: flex;
+          align-items: flex-end;
+          margin-top: 30px;
+
+          &>div {
+            width: 50%;
+            margin-right: 30px;
+
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

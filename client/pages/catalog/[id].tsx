@@ -8,23 +8,46 @@ import { Button } from "../../components/Button/Button";
 import { ProductTabs } from "../../containers/ProductTabs/ProductTabs";
 
 import styles from "../../styles/Pages/Product.module.scss";
-import { addFilters } from "../../store/actions-creators/category";
+import {
+  addFilters,
+  fetchCategories,
+} from "../../store/actions-creators/category";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import CustomizedCheckbox from "../../components/Checkbox/Checkbox";
+import Checkbox from "../../components/Checkbox/Checkbox";
+import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
+import { changeCart } from "../../store/actions-creators/cart";
+import { addBreadcrumb } from "../../store/actions-creators/breadcrumb";
+import { NextThunkDispatch, wrapper } from "../../store";
 
 const ProductPage = ({ product }) => {
-  const router = useRouter();
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const { filters } = useTypedSelector((state) => state.category);
+  const { carts } = useTypedSelector((state) => state.cart);
+
   const [productState, setProductState] = useState(null);
   const [selDose, setSelDose] = useState(null);
 
   const handleSelDose = (dose) => setSelDose(dose);
 
+  const handleOrder = () => {
+    const cartLS = localStorage.getItem("cart");
+    const cart = cartLS
+      ? JSON.parse(cartLS).map((e) =>
+          e._id === productState._id ? productState : e
+        )
+      : [productState];
+    console.log(cart);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    dispatch(changeCart(cart));
+
+    router.push("/cart");
+  };
+
   const handleSelPackages = (count) => {
-    const selArrLS = localStorage.getItem("cart");
     const selArr = [];
 
     const dosesObj = {
@@ -50,13 +73,7 @@ const ProductPage = ({ product }) => {
       ),
       dosesList: productState.doses.map((e) => e.dose),
     };
-    console.log(selArr);
-    localStorage.setItem(
-      "cart",
-      selArrLS
-        ? JSON.stringify([...JSON.parse(selArrLS), ...selArr])
-        : JSON.stringify(selArr)
-    );
+
     setProductState({ ...product, ...dosesObj });
   };
 
@@ -84,14 +101,44 @@ const ProductPage = ({ product }) => {
     }
   }, [filters.type]);
 
-  console.log("productState", productState);
+  useEffect(() => {
+    const type = sessionStorage.getItem("type");
+    const query = sessionStorage.getItem("query");
+
+    if (productState) {
+      const breadcrumbs = [
+        {
+          text: "Home",
+          route: "/",
+        },
+        {
+          text: query || type,
+          route: "/catalog",
+        },
+        {
+          text: productState.name,
+          route: "",
+        },
+      ];
+      dispatch(addBreadcrumb(breadcrumbs));
+    }
+  }, [productState]);
+
   return (
     <Layout>
       {productState && (
         <div className="container">
+          <Breadcrumbs />
           <div className={styles.product_inner}>
             <div className={styles.product_info}>
               <div className={styles.product_left}>
+                {productState.pillImage && (
+                  <img
+                    className={styles.product_left_img}
+                    src={`http://localhost:5000/${productState.pillImage}`}
+                    alt=""
+                  />
+                )}
                 <img
                   src={`http://localhost:5000/${productState.packageImage}`}
                   alt="product-image"
@@ -134,7 +181,7 @@ const ProductPage = ({ product }) => {
                           <div
                             className={styles.product_table_dosesList_el_input}
                           >
-                            <CustomizedCheckbox isChecked={e.isSelected} />
+                            <Checkbox isChecked={e.isSelected || false} />
                           </div>
                           <div
                             className={styles.product_table_dosesList_el_amount}
@@ -169,7 +216,7 @@ const ProductPage = ({ product }) => {
                 <Button
                   text={"ZUM WARENKORB HINZUFÜGENIN"}
                   style={{ marginTop: "24px", width: "100%" }}
-                  handleClick={() => router.push("/cart")}
+                  handleClick={handleOrder}
                 />
               </div>
             </div>
@@ -183,15 +230,19 @@ const ProductPage = ({ product }) => {
 
 export default ProductPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  console.log("params.id", params.id);
-  const response = await axios.get(
-    "http://localhost:5000/product/" + params.id
-  );
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store, params }) => {
+    const dispatch = store.dispatch as NextThunkDispatch;
+    await dispatch(await fetchCategories());
 
-  return {
-    props: {
-      product: response.data,
-    },
-  };
-};
+    const response = await axios.get(
+      "http://localhost:5000/product/" + params.id
+    );
+
+    return {
+      props: {
+        product: response.data,
+      },
+    };
+  }
+);

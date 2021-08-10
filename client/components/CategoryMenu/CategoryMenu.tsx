@@ -7,12 +7,15 @@ export const CategoryMenu = ({
   categories,
   handleSetCatMenuFilters,
   handleSetTypeMenuFilters,
+  handleOpenCatalogPage,
 }) => {
   return (
     <div className={styles.catMenu}>
       <div className={styles.catMenu_inner}>
         <div className={styles.catMenu_header}>
-          <p className={styles.catMenu_title}>Kategorien</p>
+          <p className={styles.catMenu_title} onClick={handleOpenCatalogPage}>
+            Kategorien
+          </p>
           {!isOpenDD && (
             <div
               className={styles.catMenu_imgWrapper}

@@ -1,7 +1,6 @@
 import styles from "./DropDown.module.scss";
 import { getClassname } from "../../utils/utils";
 import { useRouter } from "next/router";
-import { Link } from "@material-ui/core";
 
 export const DropDown = ({
   category,

@@ -1,0 +1,30 @@
+.input {
+  margin-right: 11px;
+  position: relative;
+  width: 29px;
+  height: 29px;
+  border-radius: 100%;
+  border: 1px solid #000;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+  &::before {
+    position: absolute;
+    content: url('/checkbox.svg');
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &:checked {
+    border-color: rgba(60, 172, 254, 0.67);
+    background: rgba(60, 172, 254, 0.67);
+    &::before {
+      opacity: 1;
+    }
+    ~ label::before {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+}

@@ -16,6 +16,12 @@
       justify-content: space-between;
       align-items: center;
       padding: 47px 0 29px 0;
+
+      &_num {
+        font-weight: 500;
+        font-size: 19px;
+        line-height: 23px;
+      }
     }
 
     &__down {
@@ -34,13 +40,16 @@
         &_el {
           padding: 27px 0 34px 0;
           cursor: pointer;
-          //margin-left: 42px;
+          font-weight: 500;
+          font-size: 22px;
+          line-height: 26px;
         }
       }
 
       &__bucket {
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         &__circle {
           width: 45px;

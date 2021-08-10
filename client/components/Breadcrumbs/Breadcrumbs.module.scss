@@ -1,0 +1,19 @@
+.bc {
+  &_inner {
+    padding: 54px 0;
+    display: flex;
+  }
+
+  &_route {
+    display: flex;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 196.19%;
+    cursor: pointer;
+
+    &_img {
+      cursor: default;
+      margin: 0 8px;
+    }
+  }
+}

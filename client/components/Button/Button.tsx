@@ -4,7 +4,7 @@ import React from "react";
 interface IButtonProps {
   text: string;
   style?: {};
-  handleClick?: () => {};
+  handleClick?: () => void;
 }
 
 export const Button: React.FC<IButtonProps> = ({

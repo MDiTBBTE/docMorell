@@ -4,16 +4,13 @@ import { NextThunkDispatch, wrapper } from "../../store";
 import { fetchProducts } from "../../store/actions-creators/product";
 import Layout from "../../layouts/Layout";
 import { Catalog } from "../../containers/Catalog/Catalog";
-import {
-  addFilters,
-  fetchCategories,
-} from "../../store/actions-creators/category";
-import { useDispatch } from "react-redux";
+import { fetchCategories } from "../../store/actions-creators/category";
+import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
 
 export default function Index() {
-  const dispatch = useDispatch();
-
-  const { products } = useTypedSelector((state) => state.product);
+  const { products, searchedProducts } = useTypedSelector(
+    (state) => state.product
+  );
   const {
     filters: { type },
   } = useTypedSelector((state) => state.category);
@@ -21,23 +18,25 @@ export default function Index() {
   const [filteredProducts, setFilteredProducts] = useState(null);
 
   useEffect(() => {
-    const category = sessionStorage.getItem("category");
-    const type = sessionStorage.getItem("type");
-
-    if (category || type) {
-      dispatch(addFilters({ category: category, type: type }));
+    if (!searchedProducts) {
       setFilteredProducts(
         products.filter((e) => e.type.toLowerCase() === type.toLowerCase())
       );
+    } else {
+      setFilteredProducts(searchedProducts);
     }
-  }, [type]);
+  }, [type, searchedProducts]);
 
   return (
     <Layout>
       <div className="container">
         <div style={{ marginLeft: "280px" }}>
+          <Breadcrumbs />
           {filteredProducts && (
-            <Catalog title={type} products={filteredProducts} />
+            <Catalog
+              title={type || sessionStorage.getItem("query")}
+              products={filteredProducts}
+            />
           )}
         </div>
       </div>

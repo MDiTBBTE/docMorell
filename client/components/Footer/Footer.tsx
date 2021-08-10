@@ -1,13 +1,22 @@
 import React from "react";
 import styles from "./Footer.module.scss";
+import { useRouter } from "next/router";
 
 interface IFooterProps {
   isWhite: boolean;
   tabs: string[];
 }
 
+const routes = {
+  Über: "/uber",
+  "Häufige Fragen": "/haufige-fragen",
+  Artikel: "/artikel",
+  Kontakte: "/kontakte",
+};
+
 export const Footer: React.FC<IFooterProps> = ({ isWhite, tabs }) => {
   const bg = isWhite ? "footer-isWhite" : "footer-isGray";
+  const router = useRouter();
 
   return (
     <div className={styles[bg]}>
@@ -25,12 +34,16 @@ export const Footer: React.FC<IFooterProps> = ({ isWhite, tabs }) => {
         </div>
         <ul className={styles.footer__tabs}>
           {tabs.map((tab) => (
-            <li key={tab} className={styles.footer__tabs_el}>
+            <li
+              key={tab}
+              className={styles.footer__tabs_el}
+              onClick={() => router.push(routes[tab])}
+            >
               {tab}
             </li>
           ))}
         </ul>
-        <p>EU +44-203-308-6749</p>
+        <p className={styles.footer__num}>EU +44-203-308-6749</p>
       </div>
     </div>
   );

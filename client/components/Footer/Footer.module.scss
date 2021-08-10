@@ -18,18 +18,29 @@
   &__logo {
     &__txt {
       margin: 11px 0 0 70px;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 135.69%;
     }
   }
 
   &__tabs {
     display: flex;
     list-style: none;
+
     &_el {
       margin-left: 42px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 26px;
     }
   }
 
   &__num {
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 23px;
   }
 }
 

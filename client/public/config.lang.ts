@@ -1,5 +1,3 @@
-import { title } from "process";
-
 export const CONTENT = {
   tabs: ["Über", "Häufige Fragen", "Artikel", "Kontakte"],
   faq: [
@@ -263,7 +261,7 @@ export const CONTENT = {
   },
   cart: {
     title: "Dein Warenkorb",
-    products: [],
+    shippingMethodTitle: "SHIPPING METHOD",
     shippingMethod: [
       {
         title: "AirMail",
@@ -280,5 +278,36 @@ export const CONTENT = {
           "Free Trackable Courier Service shipping available for orders over $200.",
       },
     ],
+    gutschein: {
+      title: " Gutschein",
+      placeHolder: "Gutscheincode",
+      btnName: "EINLÖSEN",
+    },
+    btnToKass: "ZUR KASSE",
+    textToShopping: "Weiter Einkaufen",
+    products: [
+      {
+        img: "gift-box.svg",
+        title: "Wählen sie ihren bonus, es ist kostenlos! ",
+        text: "",
+        amount: 1,
+        free: "KOSTENLOS",
+      },
+      {
+        img: "gift-box.svg",
+        title: "Wählen sie ihren bonus, es ist kostenlos! ",
+        text: "",
+        amount: 1,
+        free: "KOSTENLOS",
+      },
+    ],
+  },
+  kasse: {
+    rechnungsadresse: {
+      title: "Rechnungsadresse",
+      lieferadresse: "Lieferadresse",
+      text: "Die Lieferadresse entsprechen den Rechnungsinformationen",
+      btnName: "BEZAHLEN",
+    },
   },
 };
