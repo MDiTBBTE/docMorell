@@ -1,5 +1,3 @@
-import { title } from "process";
-
 export const CONTENT = {
   tabs: ["Über", "Häufige Fragen", "Artikel", "Kontakte"],
   faq: [
@@ -153,38 +151,73 @@ export const CONTENT = {
         "Klicken Sie auf die folgenden haufige-fragen, um Antworten auf einige häufig gestellte Patientenfragen zu erhalten",
     },
   ],
-  FragenCnt: [
-    {
-      title: "Wie kann ich eine Bestellung erfassen?",
-      secondTitle: "Wie geht es nach dem Erfassen meiner Bestellung weiter?",
-      thirdTitle: "Wie schnell erfolgt der Versand?",
-      fourTitle: "Welche Zahlungsarten werden akzeptiert?",
-      fiveTitle: "Welche Stornierungsfristen gelten bei einer Bestellung?",
-      sixTitle: "Wie schnell erfolgt der Versand?",
-      sevenTitle: "Welche Zahlungsarten werden akzeptiert?",
-      eightTitle: "Welche Stornierungsfristen gelten bei einer Bestellung?",
-    },
-  ],
-  SecondFragenCnt: [
-    {
-      title: "Welche Versandkosten fallen an?",
-      secondTitle: "Versenden Sie auch ins Ausland?",
-      thirdTitle: "Welche Versandmöglichkeiten bieten Sie an?",
-      fourTitle: "Kann ich auch telefonisch eine Bestellung aufgeben?",
-    },
-  ],
-  ThirdFragenCnt: [
-    {
-      title: "Sind meine persönlichen Daten sicher?",
-      secondTitle: "Wie sicher sind die angebotenen Medikamente?",
-      thirdTitle: "Wie sicher sind die angebotenen Medikamente?",
-      fourTitle: "Gibt es die Möglichkeit einer Online-Beratung?",
-      fiveTitle: "Wie sicher sind die angebotenen Medikamente?",
-      sixTitle: "Gibt es die Möglichkeit einer Online-Beratung?",
-      sevenTitle: "Sind meine persönlichen Daten sicher?",
-      eightTitle: "Wie sicher sind die angebotenen Medikamente?",
-    },
-  ],
+  FragenCnt: {
+
+    cnt: [
+      {
+        title: "Wie kann ich eine Bestellung erfassen?",
+      },
+      {
+        title: "Wie geht es nach dem Erfassen meiner Bestellung weiter?"
+      },
+      {
+        title: "Wie schnell erfolgt der Versand?"
+      },
+      {
+        title: "Welche Stornierungsfristen gelten bei einer Bestellung??"
+      },
+      {
+        title: "Wie schnell erfolgt der Versand?"
+      },
+      {
+        title: "Welche Zahlungsarten werden akzeptiert?"
+      },
+      {
+        title: "Welche Stornierungsfristen gelten bei einer Bestellung?"
+      },
+    ],
+    LieferungCnt: [
+      {
+         title: "Welche Versandkosten fallen an?"
+      },
+            {
+         title: "Versenden Sie auch ins Ausland?"
+      },
+                  {
+         title: "Welche Versandmöglichkeiten bieten Sie an?"
+      },
+                        {
+         title: "Kann ich auch telefonisch eine Bestellung aufgeben?"
+       }
+    ],
+    UnserfCnt: [
+      {
+        title: "Sind meine persönlichen Daten sicher?"
+      },
+            {
+        title: "Wie sicher sind die angebotenen Medikamente?"
+      },
+                  {
+        title: "Wie sicher sind die angebotenen Medikamente?"
+      },
+                        {
+        title: "Gibt es die Möglichkeit einer Online-Beratung?"
+      },
+                              {
+        title: "Wie sicher sind die angebotenen Medikamente?"
+      },
+                                    {
+        title: "Gibt es die Möglichkeit einer Online-Beratung?"
+      },
+                                          {
+        title: "Sind meine persönlichen Daten sicher?"
+      },
+                                                {
+        title: "Wie sicher sind die angebotenen Medikamente?"
+      },
+    ]
+
+},
   productTabNames: ["Beschreibung", "Sicherheit", "Nebenwirkungen", "Versand"],
   productTabs: {
     nebenwirkungen: {
