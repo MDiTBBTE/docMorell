@@ -6,13 +6,15 @@
 
   &_title {
     padding-bottom: 63px;
-        padding-top: 32px;
-
+    padding-top: 32px;
   }
 
   &_questions {
     border-bottom: 1px solid #e7eaef;
     padding: 23px 0 23px 0;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
   }
 
   &_titleSecond {
@@ -34,7 +36,10 @@
   }
 
   &_stylesH2 {
-      border-bottom: 1px solid #E7EAEF;
-      padding-bottom: 30px;
+    border-bottom: 1px solid #e7eaef;
+    padding-bottom: 30px;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
   }
 }

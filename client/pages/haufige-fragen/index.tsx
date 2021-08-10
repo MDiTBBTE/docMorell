@@ -22,8 +22,24 @@ const Fragen = () => {
           >
             {CONTENT.Fragen.map((l) => (
               <div style={{ marginBottom: "71px", width: "731px" }}>
-                <h2>{l.title}</h2>
-                <div>{l.text}</div>
+                <h2
+                  style={{
+                    lineHeight: "35px",
+                    fontWeight: 500,
+                    fontSize: "30px",
+                  }}
+                >
+                  {l.title}
+                </h2>
+                <div
+                  style={{
+                    lineHeight: "26px",
+                    fontWeight: "normal",
+                    fontSize: "17px",
+                  }}
+                >
+                  {l.text}
+                </div>
               </div>
             ))}
           </div>
