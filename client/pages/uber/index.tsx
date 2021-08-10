@@ -2,27 +2,22 @@ import React, { useEffect } from "react";
 import { Button } from "../../components/Button/Button";
 import Layout from "../../layouts/Layout";
 import { CONTENT } from "../../public/config.lang";
-import styles from "../../components/BoardTab/BoardTab.module.scss";
+import styles from "../../styles/Pages/Uber.module.scss";
+import { NextThunkDispatch, wrapper } from "../../store/index";
+
 import { Breadcrumbs } from "../../components/Breadcrumbs/Breadcrumbs";
-import { NextThunkDispatch, wrapper } from "../../store";
 import { fetchCategories } from "../../store/actions-creators/category";
+import { fetchArticles } from "../../store/actions-creators/article";
 
 const Uber = () => {
   return (
     <Layout>
       <div className="container">
         <Breadcrumbs />
-        <div>
-          <div
-            style={{
-              width: "731px",
-              textAlign: "center",
-              paddingTop: "54px",
-              margin: "0 auto",
-            }}
-          >
+        <div className={styles.uber_content}>
+          <div>
             {CONTENT.Uber.map((e) => (
-              <div>
+              <div className={styles.uber_stylesFirstText}>
                 <h2>{e.title}</h2>
                 <div>{e.text}</div>
                 <div>
@@ -39,62 +34,30 @@ const Uber = () => {
               </div>
             ))}
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              paddingTop: "93px",
-              textAlign: "center",
-            }}
-          >
+          <div className={styles.uber_imgCards}>
             {CONTENT.uberCard.map((p) => (
-              <div style={{ width: "33,33%" }}>
-                <div
-                  className={styles.boardTab_imgWrapper}
-                  style={{
-                    width: "87px",
-                    height: "87px",
-                    borderRadius: "100%",
-                    boxShadow: "0px 5px 35px rgba(39, 44, 47, 0.1)",
-                    margin: "0 auto",
-                  }}
-                >
-                  <img src={`/board/${p.img}`} />
+              <div className={styles.uber_container}>
+                <div className={styles.uber_imgWrapper}>
+                  <img className={styles.uber_img} src={`/board/${p.img}`} />
                 </div>
-                <div style={{ flexDirection: "column", width: "311px" }}>
+                <div className={styles.uber_stylesText}>
                   <h3>{p.title}</h3>
-                </div>
-                <div style={{ flexDirection: "column", width: "311px" }}>
-                  {p.text}
+                  <div>{p.text}</div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-        <div style={{ borderBottom: "1px solid #E7EAEF" }}>
-          <h2 style={{ paddingTop: "198px", paddingBottom: "30px" }}>
-            Über Uns
-          </h2>
-        </div>
-
-        <div
-          style={{ paddingTop: "63px", width: "967px", marginBottom: "75px" }}
-        >
-          {CONTENT.uberUns.map((i) => (
-            <div>
-              <div>
-                <h3
-                  style={{
-                    margin: "0px",
-                    paddingTop: "58px",
-                  }}
-                >
-                  {i.title}
-                </h3>
-              </div>
-              <div style={{ paddingTop: "30px" }}>{i.text}</div>
+          <div className={styles.uber_questions}>
+            <h2 className={styles.uber_h2}>Über Uns</h2>
+            <div className={styles.uber_info}>
+              {CONTENT.uberUns.map((i) => (
+                <div>
+                  <h3 className={styles.uber_h3}>{i.title}</h3>
+                  <div className={styles.uber_infoText}>{i.text}</div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </Layout>
@@ -107,5 +70,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     const dispatch = store.dispatch as NextThunkDispatch;
     await dispatch(await fetchCategories());
+    await dispatch(await fetchArticles());
   }
 );

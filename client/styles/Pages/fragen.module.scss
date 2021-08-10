@@ -1,0 +1,40 @@
+.fragen {
+  &_content {
+    width: 731px;
+    margin: 0 auto;
+  }
+
+  &_title {
+    padding-bottom: 63px;
+        padding-top: 32px;
+
+  }
+
+  &_questions {
+    border-bottom: 1px solid #e7eaef;
+    padding: 23px 0 23px 0;
+  }
+
+  &_titleSecond {
+    padding: 68px 0 63px 0;
+  }
+
+  &_questionsSecond {
+    border-bottom: 1px solid #e7eaef;
+    padding: 23px 0 23px 0;
+  }
+
+  &_titleThord {
+    padding: 68px 0 63px 0;
+  }
+
+  &_questionsThord {
+    border-bottom: 1px solid #e7eaef;
+    padding: 23px 0 23px 0;
+  }
+
+  &_stylesH2 {
+      border-bottom: 1px solid #E7EAEF;
+      padding-bottom: 30px;
+  }
+}
