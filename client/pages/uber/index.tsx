@@ -18,8 +18,24 @@ const Uber = () => {
           <div>
             {CONTENT.Uber.map((e) => (
               <div className={styles.uber_stylesFirstText}>
-                <h2>{e.title}</h2>
-                <div>{e.text}</div>
+                <h2
+                  style={{
+                    fontWeight: 500,
+                    fontSize: "30px",
+                    lineHeight: "35px",
+                  }}
+                >
+                  {e.title}
+                </h2>
+                <div
+                  style={{
+                    fontWeight: "normal",
+                    fontSize: "17px",
+                    lineHeight: "26px",
+                  }}
+                >
+                  {e.text}
+                </div>
                 <div>
                   <Button
                     text={"ZUM ONLINESHOP"}
@@ -41,8 +57,24 @@ const Uber = () => {
                   <img className={styles.uber_img} src={`/board/${p.img}`} />
                 </div>
                 <div className={styles.uber_stylesText}>
-                  <h3>{p.title}</h3>
-                  <div>{p.text}</div>
+                  <h3
+                    style={{
+                      fontWeight: 500,
+                      fontSize: "23px",
+                      lineHeight: "27px",
+                    }}
+                  >
+                    {p.title}
+                  </h3>
+                  <div
+                    style={{
+                      fontWeight: "normal",
+                      fontSize: "17px",
+                      lineHeight: "26px",
+                    }}
+                  >
+                    {p.text}
+                  </div>
                 </div>
               </div>
             ))}

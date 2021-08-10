@@ -9,6 +9,7 @@
     width: 33.33%;
     display: inline-block;
     margin-top: 93px;
+    vertical-align: top;
   }
   &_imgWrapper {
     width: 87px;
@@ -56,6 +57,9 @@
   &_h2 {
     border-bottom: 1px solid #e7eaef;
     padding-bottom: 30px;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
   }
 
   &_info {
@@ -66,10 +70,16 @@
 
   &_h3 {
     padding-top: 58px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
   }
 
   &_infoText {
     padding-top: 30px;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 26px;
   }
 
   &_img {
