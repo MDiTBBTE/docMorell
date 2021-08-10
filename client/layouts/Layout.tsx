@@ -160,6 +160,18 @@ const Layout = ({ children }) => {
           content="Pillen, Viagra, Apotheke, Geschäft, Cialis"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="preload"
+          href="/fonts/Robotto/Robotto.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Montserrat/Montserrat.ttf"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
       {filters && (
         <Header
