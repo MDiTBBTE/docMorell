@@ -52,6 +52,11 @@ export class ProductService {
 
   async delete(id: ObjectId): Promise<ObjectId> {
     const product = await this.productModel.findByIdAndDelete(id);
+
+    product.pillImage &&
+      this.fileService.removeFile(FileType.IMAGE, product.pillImage);
+    product.packageImage &&
+      this.fileService.removeFile(FileType.IMAGE, product.packageImage);
     return product._id;
   }
 }
