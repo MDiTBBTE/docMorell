@@ -11,12 +11,25 @@
     display: flex;
     justify-content: flex-end;
     padding-left: 280px;
+
+    @media screen and (max-width: 1023px) {
+      padding-left: 0;
+      display: block;
+    }
   }
 
   &_tabs {
     margin-top: 40px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding-left: 280px;
+
+    @media screen and (max-width: 1023px) {
+      padding-left: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
   }
 }

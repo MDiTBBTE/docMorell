@@ -5,6 +5,20 @@
     &>img {
       width: 863px;
       height: 445px;
+
+      @media screen and (max-width: 1023px) {
+        width: 100%
+      }
+
+      @media screen and (max-width: 767px) {
+        width: 95%;
+        height: 381px;
+      }
+
+      @media screen and (max-width: 479px) {
+        height: 220px;
+        text-align: center;
+      }
     }
   }
 
@@ -13,24 +27,66 @@
     top: 113px;
     left: 31px;
 
+    @media screen and (max-width: 479px) {
+      top: 65px;
+    }
+
     &>h3 {
+      font-family: Robotto, sans-serif;
       font-weight: 500;
       font-size: 36px;
       line-height: 42px;
       color: #FFFFFF;
+
+      @media screen and (max-width: 1023px) {
+        font-size: 30px;
+        line-height: 35px;
+      }
+
+      @media screen and (max-width: 767px) {
+        font-size: 20px;
+        line-height: 25px;
+      }
+
+      @media screen and (max-width: 479px) {
+        font-size: 13px;
+        line-height: 15px;
+      }
     }
+
     &>p {
       font-weight: normal;
       font-size: 26px;
       line-height: 30px;
       color: #FFFFFF;
       margin-bottom: 34px;
+
+      @media screen and (max-width: 1023px) {
+        font-size: 24px;
+        line-height: 28px;
+      }
+
+      @media screen and (max-width: 767px) {
+        font-size: 18px;
+        line-height: 20px;
+      }
+
+      @media screen and (max-width: 479px) {
+        font-size: 12px;
+        line-height: 14px;
+      }
     }
   }
 
   &_dots {
     display: flex;
-    margin-top: 99px;
+    margin-top: 90px;
+    justify-content: flex-start;
+
+    @media screen and (max-width: 479px) {
+      margin-top: 10px;
+      justify-content: center;
+    }
 
     &_el {
       margin-right: 15px;
@@ -53,8 +109,12 @@
   &_btns {
     position: absolute;
     top: 50%;
-    right: -30px;
+    right: -20px;
     transform: translateY(-50%);
+
+    @media screen and (max-width: 767px) {
+      right: 0;
+    }
 
     &_right {
       width: 56px;
@@ -63,6 +123,11 @@
       border: none;
       transform: rotate(-90deg);
       cursor: pointer;
+
+      @media screen and (max-width: 479px) {
+        width: 35px;
+        height: 35px;
+      }
     }
   }
 }

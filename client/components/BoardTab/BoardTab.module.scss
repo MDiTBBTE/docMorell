@@ -3,6 +3,11 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    @media screen and (max-width: 1023px) {
+      align-items: center;
+      justify-content: flex-start;
+    }
   }
 
   &_imgWrapper {
@@ -12,14 +17,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 7px;
     border-radius: 100%;
+    margin: 15px 10px 0 10px;
   }
 
   &_title {
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
+
+    @media screen and (max-width: 1023px) {
+      font-size: 18px;
+      line-height: 21px;
+    }
   }
 
   &_text {

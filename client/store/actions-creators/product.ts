@@ -13,7 +13,7 @@ export const fetchProducts = () => {
     } catch (e) {
       dispatch({
         type: ProductActionTypes.FETCH_PRODUCTS_ERROR,
-        payload: "Произошла ошибка при загрузке треков",
+        payload: "Произошла ошибка при загрузке товаров",
       });
     }
   };
@@ -32,7 +32,7 @@ export const searchProducts = (query: string) => {
     } catch (e) {
       dispatch({
         type: ProductActionTypes.FETCH_PRODUCTS_ERROR,
-        payload: "Произошла ошибка при загрузке треков",
+        payload: "Произошла ошибка при загрузке товаров",
       });
     }
   };
