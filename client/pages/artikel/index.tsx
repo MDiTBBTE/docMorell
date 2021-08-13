@@ -5,6 +5,8 @@ import { NextThunkDispatch, wrapper } from "../../store";
 import { fetchCategories } from "../../store/actions-creators/category";
 import { fetchArticles } from "../../store/actions-creators/article";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import styles from "../../styles/Pages/artikel.module.scss";
+
 
 const Artikel = () => {
   const { articles, articleError } = useTypedSelector((state) => state.article);
@@ -13,7 +15,7 @@ const Artikel = () => {
     <Layout>
       <div className="container">
         <Breadcrumbs />
-        <h2> Online-Apotheke stellte häufig Fragen</h2>
+        <h2 className = {styles.artikel_styleH2}> Online-Apotheke stellte häufig Fragen</h2>
       </div>
     </Layout>
   );

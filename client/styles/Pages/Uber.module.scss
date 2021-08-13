@@ -24,12 +24,37 @@
   &_stylesText {
     width: 311px;
     margin: 0 auto;
+
+    &_h3 {
+      font-weight: 500;
+      font-size: 23px;
+      line-height: 27px;
+
+      &_p{
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 26px;
+      }
+    }
   }
 
   &_stylesFirstText {
     width: 731px;
     height: 105px;
     margin: 0 auto;
+
+    &_h2 {
+      font-weight: 500;
+      line-height: 35px;
+      font-size: 30px;
+
+      &_p {
+        margin-top: 23px;
+        font-weight: normal;
+        line-height: 26px;
+        font-size: 17px;
+      }
+    }
   }
 
   &_button {

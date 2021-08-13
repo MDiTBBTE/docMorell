@@ -7,49 +7,6 @@ import styles from "../../styles/Pages/kontakte.module.scss";
 import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
 
-// import { useDispatch } from "react-redux";
-// import { useRouter } from "next/router";
-// import CustomizedCheckbox from "../../components/Checkbox/Checkbox";
-
-//  const dispatch = useDispatch();
-//  const router = useRouter();
-
-//  const [products, setProducts] = useState([null]);
-//  const [isCorrespondedAddress, setCorrespondedAddress] = useState(false);
-//   const [order, setOrder] = useState({
-//     firstName: "",
-//     lastName: "",
-//     email: "",
-//     address: "",
-//     emailIndex: "",
-//     town: "",
-//     country: "",
-//     mobile: "",
-//     cardNumber: "",
-//     cardPeopleName: "",
-//     month: "",
-//     year: "",
-//     cvv: "",
-//   });
-
-// const handleEditOrder = (name, value) => {
-//   setOrder({ ...order, [name]: value });
-// };
-
-//   const handleOrder = () => {
-//     // const isEmpty;
-//     const orderForBuy = {
-//       ...order,
-//       expire: `${order.month}/${order.year}`,
-//     };
-//     console.log(orderForBuy);
-// };
-
-//  useEffect(() => {
-//    const items = localStorage.getItem("");
-//    items ? setProducts(JSON.parse(items)) : router.push("/");
-//  }, []);
-
 const Kontakte = () => {
   return (
     <Layout>

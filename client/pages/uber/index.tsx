@@ -18,32 +18,10 @@ const Uber = () => {
           <div>
             {CONTENT.Uber.map((e) => (
               <div className={styles.uber_stylesFirstText}>
-                <h2
-                  style={{
-                    fontWeight: 500,
-                    fontSize: "30px",
-                    lineHeight: "35px",
-                  }}
-                >
-                  {e.title}
-                </h2>
-                <div
-                  style={{
-                    fontWeight: "normal",
-                    fontSize: "17px",
-                    lineHeight: "26px",
-                  }}
-                >
-                  {e.text}
-                </div>
-                <div>
-                  <Button
-                    text={"ZUM ONLINESHOP"}
-                    style={{
-                      borderRadius: "5px",
-                      width:"573px"
-                    }}
-                  />
+                <h2 className={styles.uber_stylesFirstText_h2}>{e.title}</h2>
+                <div className={styles.uber_stylesFirstText_h2_p}>{e.text}</div>
+                <div className={styles.uber_button}>
+                  <Button text={"ZUM ONLINESHOP"} />
                 </div>
               </div>
             ))}
@@ -55,24 +33,8 @@ const Uber = () => {
                   <img className={styles.uber_img} src={`/board/${p.img}`} />
                 </div>
                 <div className={styles.uber_stylesText}>
-                  <h3
-                    style={{
-                      fontWeight: 500,
-                      fontSize: "23px",
-                      lineHeight: "27px",
-                    }}
-                  >
-                    {p.title}
-                  </h3>
-                  <div
-                    style={{
-                      fontWeight: "normal",
-                      fontSize: "17px",
-                      lineHeight: "26px",
-                    }}
-                  >
-                    {p.text}
-                  </div>
+                  <h3 className={styles.uber_stylesText_h3}>{p.title}</h3>
+                  <div className={styles.uber_stylesText_h3_p}>{p.text}</div>
                 </div>
               </div>
             ))}
