@@ -40,10 +40,8 @@ const Uber = () => {
                   <Button
                     text={"ZUM ONLINESHOP"}
                     style={{
-                      padding: "19px 52px",
-                      background: "#3CACFE",
                       borderRadius: "5px",
-                      marginTop: "29px",
+                      width:"573px"
                     }}
                   />
                 </div>

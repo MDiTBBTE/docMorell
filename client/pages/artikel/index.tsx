@@ -13,6 +13,7 @@ const Artikel = () => {
     <Layout>
       <div className="container">
         <Breadcrumbs />
+        <h2> Online-Apotheke stellte häufig Fragen</h2>
       </div>
     </Layout>
   );
