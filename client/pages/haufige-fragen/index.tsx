@@ -10,46 +10,41 @@ const Fragen = () => {
   return (
     <Layout>
       <div className="container">
+        <Breadcrumbs />
         <div className={styles.fragen_content}>
-          <Breadcrumbs />
-          <div
-            style={{
-              width: "731px",
-              textAlign: "center",
-              paddingTop: "54px",
-              margin: "0 auto",
-            }}
-          >
+          <div className={styles.fragen_container}>
             {CONTENT.Fragen.map((l) => (
-              <div style={{ marginBottom: "71px", width: "731px" }}>
-                <h2>{l.title}</h2>
-                <div>{l.text}</div>
+              <div className={styles.fragen_lineBottom}>
+                <h2 className={styles.fragen_container_h2}>{l.title}</h2>
+                <div className={styles.fragen_container_h2_p}>{l.text}</div>
               </div>
             ))}
           </div>
+        </div>
+        <div>
+          <div className={styles.fragen_title}>
+            <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
+          </div>
           <div>
-            <div className={styles.fragen_title}>
-              <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
-            </div>
             {CONTENT.FragenCnt.cnt.map((s) => (
               <div className={styles.fragen_questions}>{s.title}</div>
             ))}
           </div>
+        </div>
 
-          <div className={styles.fragen_titleSecond}>
+        <div className={styles.fragen_titleSecond}>
+          <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
+        </div>
+        {CONTENT.FragenCnt.LieferungCnt.map((s) => (
+          <div className={styles.fragen_questionsSecond}>{s.title}</div>
+        ))}
+        <div className={styles.fragen_titleThord}>
+          <div>
             <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
           </div>
-          {CONTENT.FragenCnt.LieferungCnt.map((s) => (
-            <div className={styles.fragen_questionsSecond}>{s.title}</div>
+          {CONTENT.FragenCnt.UnserfCnt.map((s) => (
+            <div className={styles.fragen_questionsThord}>{s.title}</div>
           ))}
-          <div className={styles.fragen_titleThord}>
-            <div>
-              <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
-            </div>
-            {CONTENT.FragenCnt.UnserfCnt.map((s) => (
-              <div className={styles.fragen_questionsThord}>{s.title}</div>
-            ))}
-          </div>
         </div>
       </div>
     </Layout>
