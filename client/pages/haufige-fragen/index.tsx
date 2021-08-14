@@ -11,27 +11,20 @@ const Fragen = () => {
     <Layout>
       <div className="container">
         <Breadcrumbs />
-        <div className={styles.fragen_content}>
+        {CONTENT.Fragen.map((l) => (
           <div className={styles.fragen_container}>
-            {CONTENT.Fragen.map((l) => (
-              <div className={styles.fragen_lineBottom}>
-                <h2 className={styles.fragen_container_h2}>{l.title}</h2>
-                <div className={styles.fragen_container_h2_p}>{l.text}</div>
-              </div>
-            ))}
+            <h2 className={styles.fragen_container_h2}>{l.title}</h2>
+            <div className={styles.fragen_container_h2_p}>{l.text}</div>
           </div>
+        ))}
+      </div>
+      <div className={styles.fragen_contQuestions}>
+        <div className={styles.fragen_title}>
+          <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
         </div>
-        <div>
-          <div className={styles.fragen_title}>
-            <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
-          </div>
-          <div>
-            {CONTENT.FragenCnt.cnt.map((s) => (
-              <div className={styles.fragen_questions}>{s.title}</div>
-            ))}
-          </div>
-        </div>
-
+        {CONTENT.FragenCnt.cnt.map((s) => (
+          <div className={styles.fragen_questions}>{s.title}</div>
+        ))}
         <div className={styles.fragen_titleSecond}>
           <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
         </div>
@@ -39,9 +32,7 @@ const Fragen = () => {
           <div className={styles.fragen_questionsSecond}>{s.title}</div>
         ))}
         <div className={styles.fragen_titleThord}>
-          <div>
-            <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
-          </div>
+          <h2 className={styles.fragen_stylesH2}>Bestellungen & Zahlung</h2>
           {CONTENT.FragenCnt.UnserfCnt.map((s) => (
             <div className={styles.fragen_questionsThord}>{s.title}</div>
           ))}

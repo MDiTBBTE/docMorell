@@ -1,14 +1,10 @@
 .fragen {
-  &_content {
-    width: 731px;
-    margin: 0 auto;
-  }
-
   &_container {
     width: 731px;
     text-align: center;
     padding-top: 54px;
     margin: 0 auto;
+    margin-bottom: 71px;
 
     &_h2 {
       font-weight: 500;
@@ -34,10 +30,6 @@
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
-  }
-
-  &_lineBottom {
-    margin-bottom: 71px;
   }
 
   &_titleSecond {
@@ -70,5 +62,10 @@
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
+  }
+
+  &_contQuestions {
+    width: 963px;
+    margin-left: 252px;
   }
 }
