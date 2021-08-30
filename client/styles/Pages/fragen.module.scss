@@ -6,15 +6,54 @@
     margin: 0 auto;
     margin-bottom: 71px;
 
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 289px;
+      margin: 0 auto;
+      margin-left: 16px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 700px;
+      margin: 0 auto;
+    }
+
     &_h2 {
       font-weight: 500;
       line-height: 35px;
       font-size: 30px;
+      margin-bottom: 23px;
+
+      @media (min-width: 320px) and (max-width: 767px) {
+        width: 244px;
+        margin: 0 auto;
+        margin-bottom: 11px;
+        font-weight: 500;
+        font-size: 21px;
+        line-height: 25px;
+      }
+      @media (min-width: 768px) and (max-width: 1439px) {
+        width: 500px;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 20px;
+      }
 
       &_p {
         line-height: 26px;
         font-weight: normal;
         font-size: 17px;
+        width: 731px;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+          width: 289px;
+          margin-bottom: 44px;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 155.4%;
+        }
+
+        @media (min-width: 768px) and (max-width: 1439px) {
+          width: 700px;
+        }
       }
     }
   }
@@ -22,6 +61,24 @@
   &_title {
     padding-bottom: 63px;
     padding-top: 32px;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 290px;
+      font-style: normal;
+      text-align: left;
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 22px;
+      padding-bottom: 41px;
+      padding-top: 44px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 600px;
+      font-weight: 500;
+      padding-bottom: 25px;
+      padding-top: 30px;
+    }
   }
 
   &_questions {
@@ -30,10 +87,43 @@
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 290px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+      padding: 16px 0 16px 0;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 600px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 20px;
+    }
   }
 
   &_titleSecond {
     padding: 68px 0 63px 0;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 290px;
+      font-style: normal;
+      text-align: left;
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 22px;
+      padding-bottom: 41px;
+      padding-top: 44px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 600px;
+      font-weight: 500;
+      padding-bottom: 25px;
+      padding-top: 30px;
+    }
   }
 
   &_questionsSecond {
@@ -42,10 +132,41 @@
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
+    padding: 16px 0 16px 0;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 290px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 600px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 20px;
+    }
   }
 
   &_titleThord {
     padding: 68px 0 63px 0;
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 290px;
+      font-style: normal;
+      text-align: left;
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 22px;
+      padding-bottom: 41px;
+      padding-top: 44px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 600px;
+      font-weight: 500;
+      padding-bottom: 25px;
+      padding-top: 30px;
+    }
   }
 
   &_questionsThord {
@@ -54,6 +175,20 @@
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
+    padding: 16px 0 16px 0;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 290px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 20px;
+    }
   }
 
   &_stylesH2 {
@@ -62,10 +197,27 @@
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 22px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 600px;
+    }
   }
+
 
   &_contQuestions {
     width: 963px;
     margin-left: 252px;
+    @media (min-width: 320px) and (max-width: 767px) {
+      margin-left: 17px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      margin-left: 65px;
+    }
   }
 }

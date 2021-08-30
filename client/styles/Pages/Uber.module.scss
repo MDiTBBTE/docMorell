@@ -1,6 +1,5 @@
 .uber {
   &_content {
-    // width: 731px;
     text-align: center;
     margin: 0 auto;
     margin-top: 54px;
@@ -10,6 +9,17 @@
     display: inline-block;
     margin-top: 93px;
     vertical-align: top;
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 100%;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 auto;
+      margin-top: 93px;
+    }
   }
   &_imgWrapper {
     width: 87px;
@@ -19,21 +29,63 @@
     margin: 0 auto;
     margin-bottom: 18px;
     box-shadow: 0px 5px 35px rgba(39, 44, 47, 0.1);
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      margin-bottom: 18px;
+      margin-top: 45px;
+    }
+    //   @media (min-width: 768px) and (max-width: 1439px) {
+    //   }
   }
 
   &_stylesText {
     width: 311px;
     margin: 0 auto;
+    // @media (min-width: 320px) and (max-width: 767px) {
+    // }
+    // @media (min-width: 768px) and (max-width: 1439px) {
+    // }
 
     &_h3 {
       font-weight: 500;
       font-size: 23px;
       line-height: 27px;
 
-      &_p{
+      @media (min-width: 320px) and (max-width: 767px) {
+        width: 159px;
+        margin: 0 auto;
+        font-weight: 500;
+        font-size: 19px;
+        line-height: 22px;
+        margin-bottom: 13px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1439px) {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 20px;
+      }
+
+      &_p {
         font-weight: normal;
         font-size: 17px;
         line-height: 26px;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+          margin: 0 auto;
+          width: 288px;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 155.4%;
+          text-align: center;
+        }
+
+        @media (min-width: 768px) and (max-width: 1439px) {
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 23px;
+          padding-top: 30px;
+        }
       }
     }
   }
@@ -42,17 +94,48 @@
     width: 731px;
     height: 105px;
     margin: 0 auto;
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 100%;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+    }
 
     &_h2 {
       font-weight: 500;
       line-height: 35px;
       font-size: 30px;
+      @media (min-width: 320px) and (max-width: 767px) {
+        margin: 0 auto;
+        width: 244px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 21px;
+        line-height: 25px;
+        margin-bottom: 11px;
+      }
+      @media (min-width: 768px) and (max-width: 1439px) {
+        font-weight: 500;
+        line-height: 25px;
+        font-size: 24px;
+      }
 
       &_p {
         margin-top: 23px;
         font-weight: normal;
         line-height: 26px;
         font-size: 17px;
+        @media (min-width: 320px) and (max-width: 767px) {
+          margin: 0 auto;
+          width: 289px;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 155.4%;
+        }
+        @media (min-width: 768px) and (max-width: 1439px) {
+          font-weight: normal;
+          line-height: 20px;
+          font-size: 14px;
+        }
       }
     }
   }
@@ -66,17 +149,43 @@
     margin: 0 auto;
     margin-top: 29px;
     margin-bottom: 93px;
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 289px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 200px;
+    }
   }
 
   &_imgCards {
     padding-top: 93px;
     text-align: center;
     padding-bottom: 198px;
+    @media (min-width: 320px) and (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 150px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1439px) {
+      margin: 0 auto;
+    }
   }
 
   &_questions {
     width: 967px;
     text-align: left;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      margin: 0 auto;
+      width: 100%;
+      margin-left: 15px;
+      margin-right: 16px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+    }
   }
 
   &_h2 {
@@ -85,12 +194,35 @@
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 22px;
+      padding-bottom: 10px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      padding-bottom: 30px;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 25px;
+      margin-left: 20px;
+      max-width: 700px;
+    }
   }
 
   &_info {
     padding-top: 63px;
     width: 967px;
     margin-bottom: 67px;
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 100%;
+      padding-top: 0;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+    }
+    margin-left: 20px;
   }
 
   &_h3 {
@@ -98,6 +230,24 @@
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      border-bottom: 1px solid #e7eaef;
+      padding-bottom: 10px;
+      margin: 0 auto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 16px;
+      padding-top: 31px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 20px;
+      padding-top: 28px;
+
+    }
   }
 
   &_infoText {
@@ -105,9 +255,24 @@
     font-weight: normal;
     font-size: 17px;
     line-height: 26px;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      display: none;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 20px;
+      padding-top: 20px;
+      max-width: 700px;
+    }
   }
 
   &_img {
     padding-top: 33%;
+    @media (min-width: 320px) and (max-width: 767px) {
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+    }
   }
 }

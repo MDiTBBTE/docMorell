@@ -15,7 +15,6 @@ const Uber = () => {
       <div className="container">
         <Breadcrumbs />
         <div className={styles.uber_content}>
-          <div>
             {CONTENT.Uber.map((e) => (
               <div className={styles.uber_stylesFirstText}>
                 <h2 className={styles.uber_stylesFirstText_h2}>{e.title}</h2>
@@ -25,7 +24,6 @@ const Uber = () => {
                 </div>
               </div>
             ))}
-          </div>
           <div className={styles.uber_imgCards}>
             {CONTENT.uberCard.map((p) => (
               <div className={styles.uber_container}>
