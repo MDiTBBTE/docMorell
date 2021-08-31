@@ -1,4 +1,20 @@
+@font-face {
+  font-family: "Robotto";
+  src: url("/fonts/Robotto/Robotto.ttf");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat/Montserrat.ttf");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
 .container {
-  max-width: 1153px;
+  max-width: 1160px;
+  width: 95%;
   margin: 0 auto;
 }

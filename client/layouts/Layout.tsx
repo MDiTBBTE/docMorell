@@ -9,7 +9,7 @@ import {
   changeCategories,
 } from "../store/actions-creators/category";
 import { useDispatch } from "react-redux";
-import { changeCategoryState } from "../utils/utils";
+import { changeCategoryState, useWindowSize } from "../utils/utils";
 import { changeCart } from "../store/actions-creators/cart";
 import { useRouter } from "next/router";
 import { addBreadcrumb } from "../store/actions-creators/breadcrumb";
@@ -19,8 +19,9 @@ import {
   searchProducts,
 } from "../store/actions-creators/product";
 import { NextThunkDispatch } from "../store";
+import { changeWindowSize } from "../store/actions-creators/windwoSize";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, width }) => {
   const dispatch = useDispatch() as NextThunkDispatch;
   const router = useRouter();
 
@@ -33,6 +34,11 @@ const Layout = ({ children }) => {
 
   const [isOpenCategoryDD, setOpenCategoryDD] = useState(false);
   const [query, setQuery] = useState("");
+  const size = useWindowSize();
+
+  useEffect(() => {
+    dispatch(changeWindowSize(size));
+  }, [size]);
 
   const handleSearch = (value) => {
     setQuery(value);
@@ -160,6 +166,18 @@ const Layout = ({ children }) => {
           content="Pillen, Viagra, Apotheke, Geschäft, Cialis"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="preload"
+          href="/fonts/Robotto/Robotto.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Montserrat/Montserrat.ttf"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
       {filters && (
         <Header
@@ -173,10 +191,11 @@ const Layout = ({ children }) => {
           query={query}
           handleSearch={handleSearch}
           handleSearchRequest={handleSearchRequest}
+          width={width}
         />
       )}
       <div>{children}</div>
-      <Footer isWhite={false} tabs={CONTENT.tabs} />
+      <Footer isWhite={false} tabs={CONTENT.tabs} width={width} />
     </>
   );
 };

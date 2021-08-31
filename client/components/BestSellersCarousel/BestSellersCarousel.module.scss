@@ -1,0 +1,61 @@
+.bsCarousel {
+  &_inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+
+    &_title {
+      font-family: Roboto, sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 37px;
+    }
+
+    &_btns {
+      display: flex;
+
+      &_btn {
+        width: 42px;
+        height: 42px;
+        background-color: #3CACFE;
+        background-image: url("/dd_arrow-white.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 100%;
+        border: none;
+        margin-right: 10px;
+        outline: none;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &_disable {
+          background-color: rgba(60, 172, 254, 0.5);
+        }
+
+        &_right {
+          transform: rotate(-90deg);
+        }
+
+        &_left {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  &_cnt {
+    display: flex;
+    margin-top: 42px;
+
+    @media screen and (max-width: 767px) {
+      justify-content: space-between;
+    }
+  }
+}

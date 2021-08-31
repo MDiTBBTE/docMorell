@@ -4,7 +4,7 @@ import { CONTENT } from "../../public/config.lang";
 import { useEffect, useState } from "react";
 import { BoardTab } from "../../components/BoardTab/BoardTab";
 
-export const Board = () => {
+export const Board = ({ width }) => {
   const [carousel, setCarousel] = useState(CONTENT.carousel);
   const [ind, setInd] = useState(0);
   const [selItem, setSelItem] = useState(CONTENT.carousel[ind || 0]);
@@ -39,6 +39,7 @@ export const Board = () => {
             dots={dots}
             handleNextClick={handleNextClick}
             handleChooseClick={handleChooseClick}
+            width={width}
           />
         </div>
         <div className={styles.board_tabs}>

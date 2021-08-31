@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 interface IFooterProps {
   isWhite: boolean;
+  width: number;
   tabs: string[];
 }
 
@@ -14,16 +15,20 @@ const routes = {
   Kontakte: "/kontakte",
 };
 
-export const Footer: React.FC<IFooterProps> = ({ isWhite, tabs }) => {
+export const Footer: React.FC<IFooterProps> = ({ isWhite, tabs, width }) => {
   const bg = isWhite ? "footer-isWhite" : "footer-isGray";
   const router = useRouter();
 
   return (
     <div className={styles[bg]}>
       <div className={`${"container"} ${styles.footer__inner}`}>
-        <div>
+        <div
+          style={{
+            textAlign: width <= 768 ? "center" : "left",
+          }}
+        >
           <img
-            src="/LOGO.svg"
+            src={`${width <= 768 ? "/LOGO_mob.svg" : "/LOGO.svg"}`}
             alt="Logo DocMorell"
             width="auto"
             height="auto"

@@ -7,6 +7,7 @@ export const Carousel = ({
   dots,
   handleNextClick,
   handleChooseClick,
+  width,
 }) => {
   return (
     <div>
@@ -21,8 +22,28 @@ export const Carousel = ({
           <p>{selItem.text}</p>
           <Button
             text={"Jetzt kaufen"}
-            style={{ padding: "19px 52px", background: "#FF6B03" }}
+            style={{
+              padding: width <= 768 ? "10px 18px" : "19px 50px",
+              background: "#FF6B03",
+            }}
           />
+          {width > 480 && (
+            <div className={styles.carousel_dots}>
+              {dots.map(({ id, isSelected }) => (
+                <div
+                  key={id}
+                  onClick={() => handleChooseClick(id)}
+                  className={`${styles.carousel_dots_el} ${getClassname(
+                    isSelected,
+                    styles.carousel_dots_el_sel,
+                    styles.carousel_dots_el_notSel
+                  )}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+        {width <= 480 && (
           <div className={styles.carousel_dots}>
             {dots.map(({ id, isSelected }) => (
               <div
@@ -36,7 +57,7 @@ export const Carousel = ({
               />
             ))}
           </div>
-        </div>
+        )}
         <div className={styles.carousel_btns}>
           <button
             className={styles.carousel_btns_right}

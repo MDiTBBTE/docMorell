@@ -18,6 +18,7 @@ interface IHeaderProps {
   handleSetCatMenuFilters: (category: string) => void;
   handleSetTypeMenuFilters: (type: string) => void;
   query: string;
+  width: number;
   handleSearch: (type: string) => void;
 }
 
@@ -40,6 +41,7 @@ export const Header: React.FC<IHeaderProps> = ({
   query,
   handleSearch,
   handleSearchRequest,
+  width,
 }) => {
   const router = useRouter();
 
@@ -48,7 +50,7 @@ export const Header: React.FC<IHeaderProps> = ({
       <div className={`container ${styles.header__inner}`}>
         <div className={styles.header__inner__up}>
           <img
-            src="/LOGO.svg"
+            src={`${width <= 768 ? "/LOGO_mob.svg" : "/LOGO.svg"}`}
             alt="Logo DocMorell"
             width="auto"
             height="auto"
@@ -57,34 +59,52 @@ export const Header: React.FC<IHeaderProps> = ({
           />
           <Input
             placeholder={"Suche mit Name"}
-            style={{ height: "51px", width: "442px" }}
+            style={{ height: "51px", width: width <= 768 ? "140px" : "300px" }}
             value={query}
             handleChange={handleSearch}
             handleSearchRequest={handleSearchRequest}
           />
-          <p className={styles.header__inner__up_num}>EU +44-203-308-6749</p>
-          <img src="/Account.svg" alt="account" width="auto" height="auto" />
+          {width >= 1024 && (
+            <>
+              <p className={styles.header__inner__up_num}>
+                EU +44-203-308-6749
+              </p>
+
+              <img
+                src="/Account.svg"
+                alt="account"
+                width="auto"
+                height="auto"
+              />
+            </>
+          )}
         </div>
         <div className={styles.header__inner__down}>
-          <CategoryMenu
-            isOpenDD={isOpenCategoryDD}
-            handleOpenCategoryDD={handleOpenCategoryDD}
-            categories={categories}
-            handleSetCatMenuFilters={handleSetCatMenuFilters}
-            handleSetTypeMenuFilters={handleSetTypeMenuFilters}
-            handleOpenCatalogPage={() => router.push("/catalog")}
-          />
-          <ul className={styles.header__inner__down__tabs}>
-            {tabs.map((tab) => (
-              <li
-                key={tab}
-                className={styles.header__inner__down__tabs_el}
-                onClick={() => router.push(routes[tab])}
-              >
-                {tab}
-              </li>
-            ))}
-          </ul>
+          {width >= 1024 ? (
+            <>
+              <CategoryMenu
+                isOpenDD={isOpenCategoryDD}
+                handleOpenCategoryDD={handleOpenCategoryDD}
+                categories={categories}
+                handleSetCatMenuFilters={handleSetCatMenuFilters}
+                handleSetTypeMenuFilters={handleSetTypeMenuFilters}
+                handleOpenCatalogPage={() => router.push("/catalog")}
+              />
+              <ul className={styles.header__inner__down__tabs}>
+                {tabs.map((tab) => (
+                  <li
+                    key={tab}
+                    className={styles.header__inner__down__tabs_el}
+                    onClick={() => router.push(routes[tab])}
+                  >
+                    {tab}
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className={styles.header__inner__up_num}>EU +44-203-308-6749</p>
+          )}
           <div
             className={styles.header__inner__down__bucket}
             onClick={() => router.push("/cart")}

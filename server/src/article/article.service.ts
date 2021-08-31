@@ -28,6 +28,10 @@ export class ArticleService {
   }
   async deleteArticle(id: ObjectId): Promise<Article> {
     const article = await this.articleModel.findByIdAndDelete(id);
+
+    article.picture &&
+      this.fileService.removeFile(FileType.IMAGE, article.picture);
+
     return article._id;
   }
 }

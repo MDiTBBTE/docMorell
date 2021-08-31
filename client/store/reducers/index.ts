@@ -5,6 +5,7 @@ import { articleReducer } from "./articleReducer";
 import { productReducer } from "./productReducer";
 import { breadcrumbReducer } from "./breadcrumbReducer";
 import { cartReducer } from "./cartReducer";
+import { windowSizeReducer } from "./windowSizeReducer";
 
 const rootReducer = combineReducers({
   category: categoryReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   product: productReducer,
   breadcrumb: breadcrumbReducer,
   cart: cartReducer,
+  windowSize: windowSizeReducer,
 });
 
 export const reducer = (state, action) => {
