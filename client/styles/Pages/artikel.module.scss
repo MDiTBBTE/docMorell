@@ -1,0 +1,118 @@
+.artikel {
+  &_styleH2 {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding-bottom: 54px;
+    margin: 0 auto;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      width: 244px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 21px;
+      line-height: 25px;
+      text-align: center;
+      padding-bottom: 27px;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      margin: 0 auto;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 15px;
+      text-align: center;
+    }
+  }
+
+  &_cards {
+    display: flex;
+    margin: 0 auto;
+
+    @media (min-width: 320px) and (max-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) and (max-width: 1439px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+
+    &_stylesCards {
+      width: 367px;
+      height: 412px;
+      margin: 0 0 31px 35px;
+      border-radius: 5px;
+      box-shadow: 0px 15px 35px rgba(39, 44, 47, 0.1);
+      background-color: white;
+
+      @media (min-width: 320px) and (max-width: 767px) {
+        width: 288px;
+        height: 361px;
+        margin: 0 auto;
+        margin-bottom: 31px;
+      }
+
+      &_position {
+        margin: 24px 20px 0 20px;
+      }
+
+      &_title {
+        margin: 0 0 12px 0;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+          width: 256px;
+          margin: 0 auto;
+          margin-bottom: 13px;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 19px;
+          line-height: 23px;
+        }
+        @media (min-width: 768px) and (max-width: 1439px) {
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 20px;
+        }
+      }
+      &_text {
+        width: 327px;
+        height: 78px;
+        margin: 0 0 26px 0;
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 150.6%;
+
+        @media (min-width: 320px) and (max-width: 767px) {
+          width: 256px;
+          margin-bottom: 25px;
+          font-size: 16px;
+          line-height: 150.6%;
+        }
+        @media (min-width: 768px) and (max-width: 1439px) {
+          font-weight: normal;
+          font-size: 15px;
+          line-height: 130.6%;
+        }
+      }
+      &_date {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        margin: 0 0 17px;
+
+        @media (min-width: 768px) and (max-width: 1439px) {
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 100.6%;
+        }
+      }
+    }
+  }
+}
